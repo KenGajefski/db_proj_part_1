@@ -1,0 +1,32 @@
+create database part1;
+
+use part1;
+
+CREATE TABLE authors (
+    IDAuthors INTEGER,
+    namesAuthors VARCHAR(255),
+    affiliationsAuthors VARCHAR(255),
+    emailsAuthors VARCHAR(255),
+    PRIMARY KEY (IDAuthors)
+);
+
+create table reports (
+IDReports INTEGER,
+dateReports DATE,
+descriptionReports VARCHAR(255),
+finalReports INTEGER,
+PRIMARY KEY (IDReports)
+);
+
+CREATE TABLE papers (
+    IDPapers INTEGER,
+    IDAuthors INTEGER,
+    IDReports INTEGER,
+    authorPapers VARCHAR(255),
+    abstractPapers VARCHAR(255),
+    titlePapers VARCHAR(255),
+    pdfPapers VARCHAR(255),
+    PRIMARY KEY (IDPapers),
+    FOREIGN KEY (IDAuthors) REFERENCES authors (IDAuthors),
+	FOREIGN KEY (IDReports) REFERENCES reports (IDReports)
+);
