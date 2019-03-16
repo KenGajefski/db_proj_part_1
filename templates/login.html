@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>DB Project Login</title>
+</head>
+{% block content %}
+<body>
+<div align="center">
+    <p>
+        {{ form.username.label }}<br>
+        {{ form.username }}
+    </p >
+    <p>
+        {{ form.password.label }}<br>
+        {{ form.password }}
+    </p>
+    <p>
+        {{ form.submit }}
+    </p>
+</div>
+</body>
+{% endblock %}
+</html>
