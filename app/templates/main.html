@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>DB Project</title>
+</head>
+<body>
+{% block content %}
+    <div>
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+        <ul>
+            {% for message in messages %}
+            <li>{{ message }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+        {% endwith %}
+    </div>
+    <div align="center">
+        <h1>
+            This is where the buttons and stuff go for the DB part
+        </h1>
+    </div>
+{% endblock %}
+</body>
+</html>

@@ -1,15 +1,15 @@
 from flask import Flask, render_template, flash, redirect
+from app import app
 from app.login_form import LoginForm
 
 
-app = Flask(__name__)
 app.config['SECRET_KEY'] = 'the-penguin-is-a-most-serene-animal'
 
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
     form = LoginForm()
-    if form.validate_on_submit():
+    if form.is_submitted():
         flash('Logging in as {}'.format(form.username.data))
         return redirect('main_page')
     return render_template('login.html', form=form)
