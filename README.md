@@ -21,6 +21,8 @@ Installing
 
 Create a new Python project from this repo. You will then need to use pip to install all the necessary libraries.
 
+#### It is highly recommended to install the PyCharm Professional edition and use your .edu email for registration so you have access to Flask configurations. The Community edition may not work correctly if setting up the Flask configuration from scratch  ####
+
 ```
 pip install Flask
 pip install WTForms
