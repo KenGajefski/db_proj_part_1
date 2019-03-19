@@ -1,32 +1,30 @@
 create database sampledb;
 
-use sampledb;
-
 CREATE TABLE authors (
-    IDAuthors INTEGER,
+    idAuthors INTEGER,
     namesAuthors VARCHAR(255),
     affiliationsAuthors VARCHAR(255),
     emailsAuthors VARCHAR(255),
-    PRIMARY KEY (IDAuthors)
+    PRIMARY KEY (idAuthors)
 );
 
 create table reports (
-IDReports INTEGER,
-dateReports DATE,
-descriptionReports VARCHAR(255),
-finalReports INTEGER,
-PRIMARY KEY (IDReports)
+    idReports INTEGER,
+    dateReports DATE,
+    descriptionReports VARCHAR(255),
+    finalReports INTEGER,
+    PRIMARY KEY (idReports)
 );
 
 CREATE TABLE papers (
-    IDPapers INTEGER,
-    IDAuthors INTEGER,
-    IDReports INTEGER,
+    idPapers INTEGER,
+    idAuthors INTEGER,
+    idReports INTEGER,
     authorPapers VARCHAR(255),
     abstractPapers VARCHAR(255),
     titlePapers VARCHAR(255),
     pdfPapers VARCHAR(255),
-    PRIMARY KEY (IDPapers),
-    FOREIGN KEY (IDAuthors) REFERENCES authors (IDAuthors),
-	FOREIGN KEY (IDReports) REFERENCES reports (IDReports)
+    PRIMARY KEY (idPapers),
+    FOREIGN KEY (idAuthors) REFERENCES authors (idAuthors),
+	FOREIGN KEY (idReports) REFERENCES reports (idReports)
 );
