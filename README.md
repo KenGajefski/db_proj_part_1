@@ -12,7 +12,6 @@ Required Software and Libraries
 -WTForms
 -Flask-MySQL
 -Flask-WTF
--Flask-SQLAlchemy
 ```
 
 This program also assumes that MySQL is setup with the required user account for the project part as well as running on port 3036 of the local machine.
@@ -27,13 +26,12 @@ Create a new Python project from this repo. You will then need to use pip to ins
 #### It is highly recommended to install the PyCharm Professional edition and use your .edu email for registration so you have access to Flask configurations. The Community edition may not work correctly if setting up the Flask configuration from scratch  ####
 
 ```
-This is to be done from the python console in PyCharm
-------------------------------------------------------
+This is to be done from the python console in PyCharm or follow the alternative method below
+---------------------------------------------------------------------------------------------
 pip install Flask
 pip install WTForms
-pip install Flask-MySQL
 pip install Flask-WTF
-pip install Flask-SQLAlchemy
+pip install mysql-connector-python
 ```
 
 An alternative to using the console is to go file > settings > Project:<projName> > Project interpreter
@@ -45,7 +43,9 @@ An alternative to using the console is to go file > settings > Project:<projName
 ## Built With
 
 * [Flask](http://flask.pocoo.org/) - The web framework used
-* [PyCharm](https://www.jetbrains.com/pycharm/) - Python IDE from JetBrains 
+* [PyCharm](https://www.jetbrains.com/pycharm/) - Python IDE from JetBrains
+* [MySQL Connector](https://dev.mysql.com/doc/connector-python/en/) - Connecting the Flask app with MySQL
+* [WTForms](https://wtforms.readthedocs.io/en/stable/) - Web Form library for use with Flask
 
 ## Authors
 
