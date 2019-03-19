@@ -1,1 +1,1 @@
-from flask_sqlalchemy import SQLAlchemy
+# This will hold all database functionality
