@@ -6,36 +6,51 @@ class DBCreation():
     dbName = 'sampledb'
 
     TABLES = {}
-    TABLES['authors'] = (
-        "CREATE TABLE `authors` ("
-        " `idAuthors` INTEGER,"
-        " `namesAuthors` VARCHAR(255),"
-        " `affiliationsAuthors` VARCHAR(255),"
-        " `emailsAuthors` VARCHAR(255),"
-        " PRIMARY KEY (`idAuthors`)"
+    TABLES['author'] = (
+        "CREATE TABLE `author` ("
+        " `namesAuthor` VARCHAR(255),"
+        " `affiliationsAuthor` VARCHAR(255),"
+        " `emailsAuthor` VARCHAR(255),"
+        " PRIMARY KEY (`namesAuthor`)"
         ") ENGINE=InnoDB")
 
-    TABLES['reports'] = (
-        "CREATE TABLE `reports` ("
-        " `idReports` INTEGER,"
-        " `dateReports` DATE,"
-        " `descriptionReports` VARCHAR(255),"
-        " `finalReports` INTEGER,"
-        " PRIMARY KEY (`idReports`)"
+    TABLES['authorList'] = (
+        "CREATE TABLE `authorList` ("
+        " `listID` INTEGER,"
+        " `authorName` VARCHAR(255),"
+        " PRIMARY KEY (`listID`),"
+        " FOREIGN KEY (`namesAuthor`) REFERENCES `author` (`namesAuthor`)"
         ") ENGINE=InnoDB")
 
-    TABLES['papers'] = (
-        "CREATE TABLE `papers` ("
-        " `idPapers` INTEGER,"
-        " `idAuthors` INTEGER,"
-        " `idReports` INTEGER,"
-        " `authorPapers` VARCHAR(255),"
-        " `abstractPapers` VARCHAR(255),"
-        " `titlePapers` VARCHAR(255),"
-        " `pdfPapers` VARCHAR(255),"
-        " PRIMARY KEY (`idPapers`),"
-        " FOREIGN KEY (`idAuthors`) REFERENCES `authors` (`idAuthors`),"
-        " FOREIGN KEY (`idReports`) REFERENCES `reports` (`idReports`)"
+    TABLES['PCMember'] = (
+        "CREATE TABLE `PCMember` ("
+        " `namePCM` VARCHAR(255),"
+        " `emailPCM` VARCHAR(255),"
+        " PRIMARY KEY (namePCM)"
+        ") ENGINE=InnoDB")
+
+    TABLES['review'] = (
+        "CREATE TABLE 'review' ("
+        " `reportID` INTEGER,"
+        " `dateReview` DATE,"
+        " `recommendationReview` VARCHAR(255),"
+        " `commentReview` VARCHAR(255),"
+        " `namePCM` VARCHAR(255),"
+        " PRIMARY KEY (reportID),"
+        " FOREIGN KEY (namePCM) REFERENCES `PCMember` (`namePCM`)"
+        ") ENGINE=InnoDB")
+
+    TABLES['paper'] = (
+        "CREATE TABLE `paper` ("
+        " `paperID` INTEGER,"
+        " `abstractPaper` VARCHAR(255),"
+        " `titlePaper` VARCHAR(255),"
+        " `pdfPaper` VARCHAR(255),"
+        " `listID` INTEGER,"
+        " `reportID` INTEGER,"
+        " PRIMARY KEY (`paperID`),"
+        " FOREIGN KEY (`listID`) REFERENCES `authorList` (`listID`),"
+        " FOREIGN KEY (`reportID`) REFERENCES `review` (`reportID`)"
         ") ENGINE=InnoDB")
 
     def create_database(self):
@@ -70,4 +85,3 @@ class DBCreation():
                     print(err.msg)
             else:
                 print("OK")
-
