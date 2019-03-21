@@ -12,28 +12,28 @@ CREATE TABLE author
 
 CREATE TABLE authorList
 (
-listID INTEGER,
-authorName VARCHAR(255),
-PRIMARY KEY (listID),
-FOREIGN KEY (authorName) REFERENCES author (namesAuthor)
+    listID INTEGER,
+    authorName VARCHAR(255),
+    PRIMARY KEY (listID),
+    FOREIGN KEY (authorName) REFERENCES author (namesAuthor)
 );
 
 create table PCMember
 (
-namePCM VARCHAR(255),
-emailPCM VARCHAR(255),
-PRIMARY KEY (namePCM)
+    namePCM VARCHAR(255),
+    emailPCM VARCHAR(255),
+    PRIMARY KEY (namePCM)
 );
 
 CREATE TABLE review
 (
-reportID INTEGER,
-dateReview DATE,
-recommendationReview VARCHAR(255),
-commentReview VARCHAR(255),
-namePCM VARCHAR(255),
-PRIMARY KEY (reportID),
-FOREIGN KEY (namePCM) REFERENCES PCMember (namePCM)
+    reportID INTEGER,
+    dateReview DATE,
+    recommendationReview VARCHAR(255),
+    commentReview VARCHAR(255),
+    namePCM VARCHAR(255),
+    PRIMARY KEY (reportID),
+    FOREIGN KEY (namePCM) REFERENCES PCMember (namePCM)
 );
 
 CREATE TABLE paper
