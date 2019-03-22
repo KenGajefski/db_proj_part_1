@@ -48,3 +48,25 @@ CREATE TABLE paper
     FOREIGN KEY (listID) REFERENCES authorList (listID),
 	FOREIGN KEY (reportID) REFERENCES review (reportID)
 );
+
+INSERT INTO `sampledb`.`author` (`namesAuthor`, `affiliationsAuthor`, `emailsAuthor`) VALUES ('Mike Jones', 'None', 'mike@test.com')
+INSERT INTO `sampledb`.`author` (`namesAuthor`, `affiliationsAuthor`, `emailsAuthor`) VALUES ('Duke Mickey', 'RCA', 'duke@test.com')
+INSERT INTO `sampledb`.`author` (`namesAuthor`, `affiliationsAuthor`, `emailsAuthor`) VALUES ('Alex Doe', 'NAACP', 'alex@test.com')
+INSERT INTO `sampledb`.`author` (`namesAuthor`, `affiliationsAuthor`, `emailsAuthor`) VALUES ('Nick Smith', 'None', 'nick@test.com')
+INSERT INTO `sampledb`.`author` (`namesAuthor`, `affiliationsAuthor`, `emailsAuthor`) VALUES ('Poe Dameron', 'RBL', 'poe@rbl.com')
+INSERT INTO `sampledb`.`author` (`namesAuthor`, `affiliationsAuthor`, `emailsAuthor`) VALUES ('D. Vader', 'EMPR', 'vader@sith.com')
+INSERT INTO `sampledb`.`author` (`namesAuthor`, `affiliationsAuthor`, `emailsAuthor`) VALUES ('Luke Copyright', 'None', 'luke@censorship.com')
+INSERT INTO `sampledb`.`author` (`namesAuthor`, `affiliationsAuthor`, `emailsAuthor`) VALUES ('Boy Wonder', 'Heroes', 'special@hero.com')
+INSERT INTO `sampledb`.`author` (`namesAuthor`, `affiliationsAuthor`, `emailsAuthor`) VALUES ('Duperman', 'Knockoffs', 'dupe@notreal.com')
+INSERT INTO `sampledb`.`author` (`namesAuthor`, `affiliationsAuthor`, `emailsAuthor`) VALUES ('Mattman', 'Knockoffs', 'matt@notreal.com')
+
+INSERT INTO `sampledb`.`authorlist` (`listID`, `authorName`) VALUES (0, 'Alex Doe')
+INSERT INTO `sampledb`.`authorlist` (`listID`, `authorName`) VALUES (2, 'D. Vader')
+INSERT INTO `sampledb`.`authorlist` (`listID`, `authorName`) VALUES (4, 'Duke Mickey')
+INSERT INTO `sampledb`.`authorlist` (`listID`, `authorName`) VALUES (6, 'Mattman')
+INSERT INTO `sampledb`.`authorlist` (`listID`, `authorName`) VALUES (8, 'Mike Jones')
+INSERT INTO `sampledb`.`authorlist` (`listID`, `authorName`) VALUES (10, 'Poe Dameron')
+INSERT INTO `sampledb`.`authorlist` (`listID`, `authorName`) VALUES (12, 'Mike Jones')
+INSERT INTO `sampledb`.`authorlist` (`listID`, `authorName`) VALUES (1, 'Nick Smith')
+INSERT INTO `sampledb`.`authorlist` (`listID`, `authorName`) VALUES (3, 'Boy Wonder')
+INSERT INTO `sampledb`.`authorlist` (`listID`, `authorName`) VALUES (5, 'Duperman')
