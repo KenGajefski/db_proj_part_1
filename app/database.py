@@ -53,31 +53,31 @@ class DBCreation():
         " FOREIGN KEY (`reportID`) REFERENCES `review` (`reportID`)"
         ") ENGINE=InnoDB")
 
-    def create_database(self):
+    def create_database(self, cursor, cnx):
         try:
-            DBCreation.cursor.execute(
+            cursor.execute(
                 "CREATE DATABASE {} DEFAULT CHARACTER SET 'utf8'".format(DBCreation.dbName))
         except mysql.connector.Error as err:
             print("Failed creating database: {}".format(err))
             exit(1)
         try:
-            DBCreation.cursor.execute("USE {}".format(DBCreation.dbName))
+            cursor.execute("USE {}".format(DBCreation.dbName))
         except mysql.connector.Error as err:
             print("Database {} does not exist.".format(DBCreation.dbName))
             if err.errno == errorcode.ER_BAD_DB_ERROR:
-                DBCreation.create_database(DBCreation.cursor)
+                DBCreation.create_database(cursor)
                 print("Database {} created successfully.".format(DBCreation.dbName))
-                DBCreation.cnx.database = DBCreation.dbName
+                cnx.database = DBCreation.dbName
             else:
                 print(err)
                 exit(1)
 
-    def create_table(self):
+    def create_table(self, cursor):
         for table_name in DBCreation.TABLES:
             table_description = DBCreation.TABLES[table_name]
             try:
                 print("Creating table {}: ".format(table_name), end='')
-                DBCreation.cursor.execute(table_description)
+                cursor.execute(table_description)
             except mysql.connector.Error as err:
                 if err.errno == errorcode.ER_TABLE_EXISTS_ERROR:
                     print("already exists.")

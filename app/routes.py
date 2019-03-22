@@ -1,6 +1,7 @@
 from flask import Flask, render_template, flash, redirect, Session
 from app import app
 from app.login_form import LoginForm
+from database import DBCreation
 import mysql.connector
 from mysql.connector import errorcode
 
@@ -13,18 +14,21 @@ session = {}
 @app.route('/', methods=['GET', 'POST'])
 def index():
     login_form = LoginForm()
-    if login_form.is_submitted():
-        session['user'] = login_form.username
-        session['pass'] = login_form.password
+    # This is clearly not secure, but is a quick and nasty auth method for the purpose of this project
+    if login_form.is_submitted() and login_form.username.data == 'john' and login_form.password.data == 'pass1234':
+        session['user'] = login_form.username.data
+        session['pass'] = login_form.password.data
         flash('Logging in as {}'.format(login_form.username.data))
         return redirect('main_page', login_form)
     return render_template('login.html', form=login_form)
 
 
 @app.route('/main_page')
-def main_page(form):
+def main_page():
     cnx = mysql.connector.connect(user={{session['user']}}, password={{session['pass']}})
     cursor = cnx.cursor()
+    # database initialization and creation functions contained here
+    dbInit = DBCreation()
     # For each button that will be on the GUI for the project, a from will have to be created
     # i.e.: loginForm, createDB, addReviewers
     # Using the same xxx.is_submitted() function for each and flashing the message will be best
