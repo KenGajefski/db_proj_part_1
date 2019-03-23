@@ -1,0 +1,16 @@
+DELIMITER $$
+CREATE TRIGGER max5papers 
+	BEFORE INSERT ON review
+	FOR EACH ROW
+BEGIN
+	IF new.email IN (
+    SELECT * FROM PCMember P 
+    WHERE 5 = (
+		SELECT COUNT(*)
+        FROM review R
+        WHERE R.email = P.emailPCM
+        )
+	) THEN
+		SIGNAL SQLSTATE'45000';
+	END IF;
+END$$
