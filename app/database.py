@@ -6,7 +6,7 @@ class DBCreation():
     dbName = 'sampledb'
 
     TABLES = {}
-        TABLES['paper'] = (
+    TABLES['paper'] = (
         "CREATE TABLE `paper` ("
         " `paperid` INTEGER,"
         " `abstractPaper` VARCHAR(255),"
@@ -85,3 +85,28 @@ class DBCreation():
                     print(err.msg)
             else:
                 print("OK")
+
+    def init_values(self):
+        add_paperValues = ("INSERT INTO paper "
+                           "(paperid, abstractPaper, titlePaper, pdfPaper) "
+                           "VALUES (3, 'absract3', 'title3','pdf3'),"
+                           "(0, 'abstract0', 'title0','pdf0'),"
+                           "(5, 'abstract5', 'title5', 'pdf5')")
+
+        add_authorValues = ("INSERT INTO author "
+                            "(nameAuthor, affiliationsAuthor, emailAuthor) "
+                            "VALUES (%s,%s,%s),"
+                            "()")
+
+        add_authorListValues = ("INSERT INTO authorlist "
+                                "(paperid, email, significance) "
+                                "VALUES (%s,%s,%s)")
+
+        add_PCMemberValues = ("INSERT INTO pcmember "
+                              "(memberid, namePCM, emailPCM) "
+                              "VALUES (%s,%s,%s)")
+
+        add_reviewValues = ("INSERT INTO review "
+                            "(reportid, dateReview, recommendationReview, commentReview, paperid, email) "
+                            "VALUES (%s,%s,%s,%s,%s,%s)")
+

@@ -50,16 +50,16 @@ CREATE TABLE review
     FOREIGN KEY (email) REFERENCES PCMember (emailPCM)
 );
 
-INSERT INTO `sampledb`.`paper` (`paperID`, `abstractPaper`, `titlePaper`, `pdfPaper`) VALUES (3, 'absract3', 'title3','pdf3');
-INSERT INTO `sampledb`.`paper` (`paperID`, `abstractPaper`, `titlePaper`, `pdfPaper`) VALUES (0, 'absract0', 'title0','pdf0');
-INSERT INTO `sampledb`.`paper` (`paperID`, `abstractPaper`, `titlePaper`, `pdfPaper`) VALUES (5, 'absract5', 'title5','pdf5');
-INSERT INTO `sampledb`.`paper` (`paperID`, `abstractPaper`, `titlePaper`, `pdfPaper`) VALUES (11, 'absract11', 'title11','pdf11');
-INSERT INTO `sampledb`.`paper` (`paperID`, `abstractPaper`, `titlePaper`, `pdfPaper`) VALUES (2, 'absract2', 'title2','pdf2');
-INSERT INTO `sampledb`.`paper` (`paperID`, `abstractPaper`, `titlePaper`, `pdfPaper`) VALUES (7, 'absract7', 'title7','pdf7');
-INSERT INTO `sampledb`.`paper` (`paperID`, `abstractPaper`, `titlePaper`, `pdfPaper`) VALUES (1, 'absract1', 'title1','pdf1');
-INSERT INTO `sampledb`.`paper` (`paperID`, `abstractPaper`, `titlePaper`, `pdfPaper`) VALUES (9, 'absract9', 'title9','pdf9');
-INSERT INTO `sampledb`.`paper` (`paperID`, `abstractPaper`, `titlePaper`, `pdfPaper`) VALUES (10, 'absract10', 'title10','pdf10');
-INSERT INTO `sampledb`.`paper` (`paperID`, `abstractPaper`, `titlePaper`, `pdfPaper`) VALUES (4, 'absract4', 'title4','pdf4');
+INSERT INTO `sampledb`.`paper` (`paperID`, `abstractPaper`, `titlePaper`, `pdfPaper`) VALUES (3, 'abstract3', 'title3','pdf3');
+INSERT INTO `sampledb`.`paper` (`paperID`, `abstractPaper`, `titlePaper`, `pdfPaper`) VALUES (0, 'abstract0', 'title0','pdf0');
+INSERT INTO `sampledb`.`paper` (`paperID`, `abstractPaper`, `titlePaper`, `pdfPaper`) VALUES (5, 'abstract5', 'title5','pdf5');
+INSERT INTO `sampledb`.`paper` (`paperID`, `abstractPaper`, `titlePaper`, `pdfPaper`) VALUES (11, 'abstract11', 'title11','pdf11');
+INSERT INTO `sampledb`.`paper` (`paperID`, `abstractPaper`, `titlePaper`, `pdfPaper`) VALUES (2, 'abstract2', 'title2','pdf2');
+INSERT INTO `sampledb`.`paper` (`paperID`, `abstractPaper`, `titlePaper`, `pdfPaper`) VALUES (7, 'abstract7', 'title7','pdf7');
+INSERT INTO `sampledb`.`paper` (`paperID`, `abstractPaper`, `titlePaper`, `pdfPaper`) VALUES (1, 'abstract1', 'title1','pdf1');
+INSERT INTO `sampledb`.`paper` (`paperID`, `abstractPaper`, `titlePaper`, `pdfPaper`) VALUES (9, 'abstract9', 'title9','pdf9');
+INSERT INTO `sampledb`.`paper` (`paperID`, `abstractPaper`, `titlePaper`, `pdfPaper`) VALUES (10, 'abstract10', 'title10','pdf10');
+INSERT INTO `sampledb`.`paper` (`paperID`, `abstractPaper`, `titlePaper`, `pdfPaper`) VALUES (4, 'abstract4', 'title4','pdf4');
 
 INSERT INTO `sampledb`.`author` (`nameAuthor`, `affiliationsAuthor`, `emailAuthor`) VALUES ('Mike Jones', 'None', 'mike@test.com');
 INSERT INTO `sampledb`.`author` (`nameAuthor`, `affiliationsAuthor`, `emailAuthor`) VALUES ('Duke Mickey', 'RCA', 'duke@test.com');
