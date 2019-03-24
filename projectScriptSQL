@@ -1,72 +1,106 @@
-create database sampledb;
+DROP DATABASE IF EXISTS sampledb;
 
-use sampledb;
+CREATE DATABASE sampledb;
+
+USE sampledb;
+
+CREATE TABLE paper (
+    paperid INTEGER,
+    abstractPaper VARCHAR(255),
+    titlePaper VARCHAR(255),
+    pdfPaper VARCHAR(255),
+    PRIMARY KEY (paperid)
+);
 
 CREATE TABLE author
 (
-    namesAuthor VARCHAR(255),
+    nameAuthor VARCHAR(255),
     affiliationsAuthor VARCHAR(255),
-    emailsAuthor VARCHAR(255),
-    PRIMARY KEY (namesAuthor)
+	emailAuthor VARCHAR(255),
+    PRIMARY KEY (emailAuthor)
 );
 
 CREATE TABLE authorList
 (
-    listID INTEGER,
-    authorName VARCHAR(255),
-    PRIMARY KEY (listID),
-    FOREIGN KEY (authorName) REFERENCES author (namesAuthor)
+    paperid INTEGER,
+    email VARCHAR(255),
+    significance INTEGER,
+    FOREIGN KEY (paperid) REFERENCES paper(paperid),
+    FOREIGN KEY (email) REFERENCES author (emailAuthor)
 );
 
-create table PCMember
+CREATE TABLE PCMember
 (
+	memberid INTEGER AUTO_INCREMENT,
     namePCM VARCHAR(255),
     emailPCM VARCHAR(255),
-    PRIMARY KEY (namePCM)
+    PRIMARY KEY (emailPCM),
+    KEY (memberid)
 );
 
 CREATE TABLE review
 (
-    reportID INTEGER,
+    reportid INTEGER,
     dateReview DATE,
     recommendationReview VARCHAR(255),
     commentReview VARCHAR(255),
-    namePCM VARCHAR(255),
-    PRIMARY KEY (reportID),
-    FOREIGN KEY (namePCM) REFERENCES PCMember (namePCM)
+	paperid INTEGER NOT NULL UNIQUE,
+    email VARCHAR(255) NOT NULL UNIQUE,
+	FOREIGN KEY (paperid) REFERENCES paper(paperid),
+    FOREIGN KEY (email) REFERENCES PCMember (emailPCM)
 );
 
-CREATE TABLE paper
-(
-    paperID INTEGER,
-    abstractPaper VARCHAR(255),
-    titlePaper VARCHAR(255),
-    pdfPaper VARCHAR(255),
-    listID INTEGER,
-    reportID INTEGER,
-    PRIMARY KEY (paperID),
-    FOREIGN KEY (listID) REFERENCES authorList (listID),
-	FOREIGN KEY (reportID) REFERENCES review (reportID)
-);
+INSERT INTO `sampledb`.`paper` (`paperID`, `abstractPaper`, `titlePaper`, `pdfPaper`) VALUES (3, 'absract3', 'title3','pdf3');
+INSERT INTO `sampledb`.`paper` (`paperID`, `abstractPaper`, `titlePaper`, `pdfPaper`) VALUES (0, 'absract0', 'title0','pdf0');
+INSERT INTO `sampledb`.`paper` (`paperID`, `abstractPaper`, `titlePaper`, `pdfPaper`) VALUES (5, 'absract5', 'title5','pdf5');
+INSERT INTO `sampledb`.`paper` (`paperID`, `abstractPaper`, `titlePaper`, `pdfPaper`) VALUES (11, 'absract11', 'title11','pdf11');
+INSERT INTO `sampledb`.`paper` (`paperID`, `abstractPaper`, `titlePaper`, `pdfPaper`) VALUES (2, 'absract2', 'title2','pdf2');
+INSERT INTO `sampledb`.`paper` (`paperID`, `abstractPaper`, `titlePaper`, `pdfPaper`) VALUES (7, 'absract7', 'title7','pdf7');
+INSERT INTO `sampledb`.`paper` (`paperID`, `abstractPaper`, `titlePaper`, `pdfPaper`) VALUES (1, 'absract1', 'title1','pdf1');
+INSERT INTO `sampledb`.`paper` (`paperID`, `abstractPaper`, `titlePaper`, `pdfPaper`) VALUES (9, 'absract9', 'title9','pdf9');
+INSERT INTO `sampledb`.`paper` (`paperID`, `abstractPaper`, `titlePaper`, `pdfPaper`) VALUES (10, 'absract10', 'title10','pdf10');
+INSERT INTO `sampledb`.`paper` (`paperID`, `abstractPaper`, `titlePaper`, `pdfPaper`) VALUES (4, 'absract4', 'title4','pdf4');
 
-INSERT INTO `sampledb`.`author` (`namesAuthor`, `affiliationsAuthor`, `emailsAuthor`) VALUES ('Mike Jones', 'None', 'mike@test.com')
-INSERT INTO `sampledb`.`author` (`namesAuthor`, `affiliationsAuthor`, `emailsAuthor`) VALUES ('Duke Mickey', 'RCA', 'duke@test.com')
-INSERT INTO `sampledb`.`author` (`namesAuthor`, `affiliationsAuthor`, `emailsAuthor`) VALUES ('Alex Doe', 'NAACP', 'alex@test.com')
-INSERT INTO `sampledb`.`author` (`namesAuthor`, `affiliationsAuthor`, `emailsAuthor`) VALUES ('Nick Smith', 'None', 'nick@test.com')
-INSERT INTO `sampledb`.`author` (`namesAuthor`, `affiliationsAuthor`, `emailsAuthor`) VALUES ('Poe Dameron', 'RBL', 'poe@rbl.com')
-INSERT INTO `sampledb`.`author` (`namesAuthor`, `affiliationsAuthor`, `emailsAuthor`) VALUES ('D. Vader', 'EMPR', 'vader@sith.com')
-INSERT INTO `sampledb`.`author` (`namesAuthor`, `affiliationsAuthor`, `emailsAuthor`) VALUES ('Luke Copyright', 'None', 'luke@censorship.com')
-INSERT INTO `sampledb`.`author` (`namesAuthor`, `affiliationsAuthor`, `emailsAuthor`) VALUES ('Boy Wonder', 'Heroes', 'special@hero.com')
-INSERT INTO `sampledb`.`author` (`namesAuthor`, `affiliationsAuthor`, `emailsAuthor`) VALUES ('Duperman', 'Knockoffs', 'dupe@notreal.com')
-INSERT INTO `sampledb`.`author` (`namesAuthor`, `affiliationsAuthor`, `emailsAuthor`) VALUES ('Mattman', 'Knockoffs', 'matt@notreal.com')
+INSERT INTO `sampledb`.`author` (`nameAuthor`, `affiliationsAuthor`, `emailAuthor`) VALUES ('Mike Jones', 'None', 'mike@test.com');
+INSERT INTO `sampledb`.`author` (`nameAuthor`, `affiliationsAuthor`, `emailAuthor`) VALUES ('Duke Mickey', 'RCA', 'duke@test.com');
+INSERT INTO `sampledb`.`author` (`nameAuthor`, `affiliationsAuthor`, `emailAuthor`) VALUES ('Alex Doe', 'NAACP', 'alex@test.com');
+INSERT INTO `sampledb`.`author` (`nameAuthor`, `affiliationsAuthor`, `emailAuthor`) VALUES ('Nick Smith', 'None', 'nick@test.com');
+INSERT INTO `sampledb`.`author` (`nameAuthor`, `affiliationsAuthor`, `emailAuthor`) VALUES ('Poe Dameron', 'RBL', 'poe@rbl.com');
+INSERT INTO `sampledb`.`author` (`nameAuthor`, `affiliationsAuthor`, `emailAuthor`) VALUES ('D. Vader', 'EMPR', 'vader@sith.com');
+INSERT INTO `sampledb`.`author` (`nameAuthor`, `affiliationsAuthor`, `emailAuthor`) VALUES ('Luke Copyright', 'None', 'luke@censorship.com');
+INSERT INTO `sampledb`.`author` (`nameAuthor`, `affiliationsAuthor`, `emailAuthor`) VALUES ('Boy Wonder', 'Heroes', 'special@hero.com');
+INSERT INTO `sampledb`.`author` (`nameAuthor`, `affiliationsAuthor`, `emailAuthor`) VALUES ('Duperman', 'Knockoffs', 'dupe@notreal.com');
+INSERT INTO `sampledb`.`author` (`nameAuthor`, `affiliationsAuthor`, `emailAuthor`) VALUES ('Mattman', 'Knockoffs', 'matt@notreal.com');
 
-INSERT INTO `sampledb`.`authorlist` (`listID`, `authorName`) VALUES (0, 'Alex Doe')
-INSERT INTO `sampledb`.`authorlist` (`listID`, `authorName`) VALUES (2, 'D. Vader')
-INSERT INTO `sampledb`.`authorlist` (`listID`, `authorName`) VALUES (4, 'Duke Mickey')
-INSERT INTO `sampledb`.`authorlist` (`listID`, `authorName`) VALUES (6, 'Mattman')
-INSERT INTO `sampledb`.`authorlist` (`listID`, `authorName`) VALUES (8, 'Mike Jones')
-INSERT INTO `sampledb`.`authorlist` (`listID`, `authorName`) VALUES (10, 'Poe Dameron')
-INSERT INTO `sampledb`.`authorlist` (`listID`, `authorName`) VALUES (12, 'Mike Jones')
-INSERT INTO `sampledb`.`authorlist` (`listID`, `authorName`) VALUES (1, 'Nick Smith')
-INSERT INTO `sampledb`.`authorlist` (`listID`, `authorName`) VALUES (3, 'Boy Wonder')
-INSERT INTO `sampledb`.`authorlist` (`listID`, `authorName`) VALUES (5, 'Duperman')
+INSERT INTO `sampledb`.`authorlist` (`paperID`, `email`, `significance`) VALUES (3, 'mike@test.com', 0);
+INSERT INTO `sampledb`.`authorlist` (`paperID`, `email`, `significance`) VALUES (0, 'duke@test.com', 2);
+INSERT INTO `sampledb`.`authorlist` (`paperID`, `email`, `significance`) VALUES (5, 'alex@test.com', 4);
+INSERT INTO `sampledb`.`authorlist` (`paperID`, `email`, `significance`) VALUES (11, 'nick@test.com', 6);
+INSERT INTO `sampledb`.`authorlist` (`paperID`, `email`, `significance`) VALUES (2, 'poe@rbl.com', 8);
+INSERT INTO `sampledb`.`authorlist` (`paperID`, `email`, `significance`) VALUES (7, 'vader@sith.com', 10);
+INSERT INTO `sampledb`.`authorlist` (`paperID`, `email`, `significance`) VALUES (1, 'luke@censorship.com', 12);
+INSERT INTO `sampledb`.`authorlist` (`paperID`, `email`, `significance`) VALUES (9, 'special@hero.com', 1);
+INSERT INTO `sampledb`.`authorlist` (`paperID`, `email`, `significance`) VALUES (10, 'dupe@notreal.com', 3);
+INSERT INTO `sampledb`.`authorlist` (`paperID`, `email`, `significance`) VALUES (4, 'matt@notreal.com', 5);
+
+INSERT INTO `sampledb`.`PCMember` (`namePCM`, `emailPCM`) VALUES ('PCM3', 'email3@email3.com');
+INSERT INTO `sampledb`.`PCMember` (`namePCM`, `emailPCM`) VALUES ('PCM0', 'email0@email0.com');
+INSERT INTO `sampledb`.`PCMember` (`namePCM`, `emailPCM`) VALUES ('PCM5', 'email5@email5.com');
+INSERT INTO `sampledb`.`PCMember` (`namePCM`, `emailPCM`) VALUES ('PCM11', 'email11@email11.com');
+INSERT INTO `sampledb`.`PCMember` (`namePCM`, `emailPCM`) VALUES ('PCM2', 'email2@email2.com');
+INSERT INTO `sampledb`.`PCMember` (`namePCM`, `emailPCM`) VALUES ('PCM7', 'email7@email7.com');
+INSERT INTO `sampledb`.`PCMember` (`namePCM`, `emailPCM`) VALUES ('PCM1', 'email1@email1.com');
+INSERT INTO `sampledb`.`PCMember` (`namePCM`, `emailPCM`) VALUES ('PCM9', 'email9@email9.com');
+INSERT INTO `sampledb`.`PCMember` (`namePCM`, `emailPCM`) VALUES ('PCM10', 'email10@email10.com');
+INSERT INTO `sampledb`.`PCMember` (`namePCM`, `emailPCM`) VALUES ('PCM4', 'email4@email4.com' );
+
+INSERT INTO `sampledb`.`review` (`reportID`, `dateReview`,  `recommendationReview`, `commentReview`, `paperid`, `email`) VALUES (3, '3333-03-03', 'recommendationreview3', 'commentreview3', 3, 'email3@email3.com');
+INSERT INTO `sampledb`.`review` (`reportID`, `dateReview`,  `recommendationReview`, `commentReview`, `paperid`, `email`) VALUES (0, '0000-00-00', 'recommendationreview0', 'commentreview0', 0, 'email0@email0.com');
+INSERT INTO `sampledb`.`review` (`reportID`, `dateReview`,  `recommendationReview`, `commentReview`, `paperid`, `email`) VALUES (5, '5555-05-05', 'recommendationreview5', 'commentreview5', 5, 'email5@email5.com');
+INSERT INTO `sampledb`.`review` (`reportID`, `dateReview`,  `recommendationReview`, `commentReview`, `paperid`, `email`) VALUES (11, '0011-11-11', 'recommendationreview11', 'commentreview11', 11, 'email11@email11.com');
+INSERT INTO `sampledb`.`review` (`reportID`, `dateReview`,  `recommendationReview`, `commentReview`, `paperid`, `email`) VALUES (2, '2222-02-22', 'recommendationreview2', 'commentreview2', 2, 'email2@email2.com');
+INSERT INTO `sampledb`.`review` (`reportID`, `dateReview`,  `recommendationReview`, `commentReview`, `paperid`, `email`) VALUES (7, '7777-07-07', 'recommendationreview7', 'commentreview7', 7, 'email7@email7.com');
+INSERT INTO `sampledb`.`review` (`reportID`, `dateReview`,  `recommendationReview`, `commentReview`, `paperid`, `email`) VALUES (1, '1111-11-11', 'recommendationreview1', 'commentreview1', 1, 'email1@email1.com');
+INSERT INTO `sampledb`.`review` (`reportID`, `dateReview`,  `recommendationReview`, `commentReview`, `paperid`, `email`) VALUES (9, '9998-09-09', 'recommendationreview9', 'commentreview9', 9, 'email9@email9.com');
+INSERT INTO `sampledb`.`review` (`reportID`, `dateReview`,  `recommendationReview`, `commentReview`, `paperid`, `email`) VALUES (10, '1010-10-10', 'recommendationreview10', 'commentreview10', 10, 'email10@email10.com');
+INSERT INTO `sampledb`.`review` (`reportID`, `dateReview`,  `recommendationReview`, `commentReview`, `paperid`, `email`) VALUES (4, '4444-04-04', 'recommendationreview4', 'commentreview4', 4, 'email4@email4.com');
