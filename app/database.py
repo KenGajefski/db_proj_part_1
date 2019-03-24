@@ -1,5 +1,6 @@
 # This will hold all database functionality
 import mysql
+import mysql.connector
 from mysql.connector import errorcode
 
 
@@ -87,10 +88,10 @@ class DBCreation():
             else:
                 print("OK")
 
-    def init_values(self):
+    def init_values(self, cursor):
         add_paperValues = ("INSERT INTO paper "
                            "(paperid, abstractPaper, titlePaper, pdfPaper) "
-                           "VALUES (3, 'absract3', 'title3','pdf3'),"
+                           "VALUES (3, 'abstract3', 'title3','pdf3'),"
                            "(0, 'abstract0', 'title0','pdf0'),"
                            "(5, 'abstract5', 'title5', 'pdf5'),"
                            "(11, 'abstract11', 'title11','pdf11'),"
@@ -152,3 +153,9 @@ class DBCreation():
                             "(9, '9998-09-09', 'recommendationreview9', 'commentreview9', 9, 'email9@email9.com'),"
                             "(10, '1010-10-10', 'recommendationreview10', 'commentreview10', 10, 'email10@email10.com'),"
                             "(4, '4444-04-04', 'recommendationreview4', 'commentreview4', 4, 'email4@email4.com')")
+
+        cursor.execute(add_paperValues)
+        cursor.execute(add_authorValues)
+        cursor.execute(add_authorListValues)
+        cursor.execute(add_PCMemberValues)
+        cursor.execute(add_reviewValues)
