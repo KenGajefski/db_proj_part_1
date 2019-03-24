@@ -24,25 +24,25 @@ def index():
     return render_template('login.html', form=login_form)
 
 
-@app.route('/main_page')
+@app.route('/main_page', methods=['GET', 'POST'])
 def main_page():
     # For each button that will be on the GUI for the project, a from will have to be created
     # i.e.: loginForm, createDB, addReviewers
     # Using the same xxx.is_submitted() function for each and flashing the message will be best
     # Main will always be the rendered template
-
+    cnx = mysql.connector.connect(user='john', password='pass1234')
+    cursor = cnx.cursor()
     createDB = CreateDB()
     assignReviewers = AssignReviewers()
     # Need to figure out how to get this to work with session[]
-    cnx = mysql.connector.connect(user='john', password='pass1234')
-    cursor = cnx.cursor()
     # database initialization and creation functions contained here
     if createDB.is_submitted():
         dbInit = DBCreation()
         dbInit.create_database(cursor, cnx)
         dbInit.create_table(cursor)
         dbInit.init_values(cursor, cnx)
-        return render_template('main.html')
+        flash('Database created and initialized')
+        return redirect('main_page')
 
     return render_template('main.html', createForm=createDB, assignReviewForm=assignReviewers)
 
