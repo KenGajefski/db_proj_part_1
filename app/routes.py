@@ -1,6 +1,7 @@
 from flask import Flask, render_template, flash, redirect, Session
 from app import app
 from app.login_form import LoginForm
+from app.main_forms import CreateDB, AssignReviewers
 from database import DBCreation
 import mysql.connector
 from mysql.connector import errorcode
@@ -25,19 +26,25 @@ def index():
 
 @app.route('/main_page')
 def main_page():
-    # Need to figure out how to get this to work with session[]
-    cnx = mysql.connector.connect(user='john', password='pass1234')
-    cursor = cnx.cursor()
-    # database initialization and creation functions contained here
-    dbInit = DBCreation()
-    dbInit.create_database(cursor, cnx)
-    dbInit.create_table(cursor)
-    dbInit.init_values(cursor, cnx)
     # For each button that will be on the GUI for the project, a from will have to be created
     # i.e.: loginForm, createDB, addReviewers
     # Using the same xxx.is_submitted() function for each and flashing the message will be best
     # Main will always be the rendered template
-    return render_template('main.html')
+
+    createDB = CreateDB()
+    assignReviewers = AssignReviewers()
+    # Need to figure out how to get this to work with session[]
+    cnx = mysql.connector.connect(user='john', password='pass1234')
+    cursor = cnx.cursor()
+    # database initialization and creation functions contained here
+    if createDB.is_submitted():
+        dbInit = DBCreation()
+        dbInit.create_database(cursor, cnx)
+        dbInit.create_table(cursor)
+        dbInit.init_values(cursor, cnx)
+        return render_template('main.html')
+
+    return render_template('main.html', createForm=createDB, assignReviewForm=assignReviewers)
 
 
 if __name__ == '__main__':

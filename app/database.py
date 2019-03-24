@@ -47,8 +47,8 @@ class DBCreation():
     TABLES['review'] = (
         "CREATE TABLE `review` ("
         " `reportid` INTEGER,"
-        # Python and MySQL Connector DO NOT play nice with DATE values. This is being changed for
-        # the purpose of trying to get the program to work. Will be refactored at TBD
+        # TODO: Python and MySQL Connector DO NOT play nice with DATE values. This is being changed for
+        # the purpose of trying to get the program to work.
         " `dateReview` DATE,"
         " `recommendationReview` VARCHAR(255),"
         " `commentReview` VARCHAR(255),"
@@ -59,12 +59,14 @@ class DBCreation():
         ") ENGINE=InnoDB")
 
     def create_database(self, cursor, cnx):
+        # TODO: Put in check to see if database exists, and drop if it does
         try:
             cursor.execute(
                 "CREATE DATABASE {} DEFAULT CHARACTER SET 'utf8'".format(DBCreation.dbName))
         except mysql.connector.Error as err:
             print("Failed creating database: {}".format(err))
-            exit(1)
+
+
         try:
             cursor.execute("USE {}".format(DBCreation.dbName))
         except mysql.connector.Error as err:

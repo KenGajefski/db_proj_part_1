@@ -18,9 +18,19 @@
         {% endwith %}
     </div>
     <div align="center">
-        <h1>
-            This is where the buttons and stuff go for the DB part
-        </h1>
+    <hr>
+        <h3>
+            Too bad Bootstrap doesn't work for me to make this look pretty.
+        </h3>
+    <div>
+        <form>
+        {{ createForm.submit() }}
+        </form>
+        <br>
+        <form>
+        {{ assignReviewForm.submit() }}
+        </form>
+    </div>
     </div>
 {% endblock %}
 </body>
