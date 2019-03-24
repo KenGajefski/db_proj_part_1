@@ -92,7 +92,7 @@ INSERT INTO `sampledb`.`PCMember` (`namePCM`, `emailPCM`) VALUES ('PCM7', 'email
 INSERT INTO `sampledb`.`PCMember` (`namePCM`, `emailPCM`) VALUES ('PCM1', 'email1@email1.com');
 INSERT INTO `sampledb`.`PCMember` (`namePCM`, `emailPCM`) VALUES ('PCM9', 'email9@email9.com');
 INSERT INTO `sampledb`.`PCMember` (`namePCM`, `emailPCM`) VALUES ('PCM10', 'email10@email10.com');
-INSERT INTO `sampledb`.`PCMember` (`namePCM`, `emailPCM`) VALUES ('PCM4', 'email4@email4.com' );
+INSERT INTO `sampledb`.`PCMember` (`namePCM`, `emailPCM`) VALUES ('PCM4', 'email4@email4.com');
 
 INSERT INTO `sampledb`.`review` (`reportID`, `dateReview`,  `recommendationReview`, `commentReview`, `paperid`, `email`) VALUES (3, '3333-03-03', 'recommendationreview3', 'commentreview3', 3, 'email3@email3.com');
 INSERT INTO `sampledb`.`review` (`reportID`, `dateReview`,  `recommendationReview`, `commentReview`, `paperid`, `email`) VALUES (0, '0000-00-00', 'recommendationreview0', 'commentreview0', 0, 'email0@email0.com');

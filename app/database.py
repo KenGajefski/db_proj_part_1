@@ -2,6 +2,7 @@
 import mysql
 import mysql.connector
 from mysql.connector import errorcode
+from datetime import date, datetime
 
 
 class DBCreation():
@@ -35,7 +36,7 @@ class DBCreation():
         ") ENGINE=InnoDB")
 
     TABLES['PCMember'] = (
-        "CREATE TABLE `PCMember` ("
+        "CREATE TABLE `pcmember` ("
         " `memberid` INTEGER AUTO_INCREMENT,"
         " `namePCM` VARCHAR(255),"
         " `emailPCM` VARCHAR(255),"
@@ -44,15 +45,17 @@ class DBCreation():
         ") ENGINE=InnoDB")
 
     TABLES['review'] = (
-        "CREATE TABLE 'review' ("
+        "CREATE TABLE `review` ("
         " `reportid` INTEGER,"
+        # Python and MySQL Connector DO NOT play nice with DATE values. This is being changed for
+        # the purpose of trying to get the program to work. Will be refactored at TBD
         " `dateReview` DATE,"
         " `recommendationReview` VARCHAR(255),"
         " `commentReview` VARCHAR(255),"
         " `paperid` INTEGER NOT NULL UNIQUE,"
         " `email` VARCHAR(255) NOT NULL UNIQUE,"
         " FOREIGN KEY (`paperid`) REFERENCES `paper` (`paperid`),"
-        " FOREIGN KEY (`email`) REFERENCES `PCMember` (`emailPCM`)"
+        " FOREIGN KEY (`email`) REFERENCES `pcmember` (`emailPCM`)"
         ") ENGINE=InnoDB")
 
     def create_database(self, cursor, cnx):
@@ -88,7 +91,7 @@ class DBCreation():
             else:
                 print("OK")
 
-    def init_values(self, cursor):
+    def init_values(self, cursor, cnx):
         add_paperValues = ("INSERT INTO paper "
                            "(paperid, abstractPaper, titlePaper, pdfPaper) "
                            "VALUES (3, 'abstract3', 'title3','pdf3'),"
@@ -143,19 +146,20 @@ class DBCreation():
 
         add_reviewValues = ("INSERT INTO review "
                             "(reportid, dateReview, recommendationReview, commentReview, paperid, email) "
-                            "VALUES (3, '3333-03-03', 'recommendationreview3', 'commentreview3', 3, 'email3@email3.com'),"
-                            "(0, '0000-00-00', 'recommendationreview0', 'commentreview0', 0, 'email0@email0.com'),"
-                            "(5, '5555-05-05', 'recommendationreview5', 'commentreview5', 5, 'email5@email5.com'),"
-                            "(11, '0011-11-11', 'recommendationreview11', 'commentreview11', 11, 'email11@email11.com'),"
-                            "(2, '2222-02-22', 'recommendationreview2', 'commentreview2', 2, 'email2@email2.com'),"
-                            "(7, '7777-07-07', 'recommendationreview7', 'commentreview7', 7, 'email7@email7.com'),"
-                            "(1, '1111-11-11', 'recommendationreview1', 'commentreview1', 1, 'email1@email1.com'),"
-                            "(9, '9998-09-09', 'recommendationreview9', 'commentreview9', 9, 'email9@email9.com'),"
-                            "(10, '1010-10-10', 'recommendationreview10', 'commentreview10', 10, 'email10@email10.com'),"
-                            "(4, '4444-04-04', 'recommendationreview4', 'commentreview4', 4, 'email4@email4.com')")
+                            "VALUES (3, current_date() , 'recommendationreview3', 'commentreview3', 3, 'email3@email3.com'),"
+                            "(0, current_date(), 'recommendationreview0', 'commentreview0', 0, 'email0@email0.com'),"
+                            "(5, current_date(), 'recommendationreview5', 'commentreview5', 5, 'email5@email5.com'),"
+                            "(11, current_date(), 'recommendationreview11', 'commentreview11', 11, 'email11@email11.com'),"
+                            "(2, current_date(), 'recommendationreview2', 'commentreview2', 2, 'email2@email2.com'),"
+                            "(7, current_date(), 'recommendationreview7', 'commentreview7', 7, 'email7@email7.com'),"
+                            "(1, current_date(), 'recommendationreview1', 'commentreview1', 1, 'email1@email1.com'),"
+                            "(9, current_date(), 'recommendationreview9', 'commentreview9', 9, 'email9@email9.com'),"
+                            "(10, current_date(), 'recommendationreview10', 'commentreview10', 10, 'email10@email10.com'),"
+                            "(4, current_date(), 'recommendationreview4', 'commentreview4', 4, 'email4@email4.com')")
 
         cursor.execute(add_paperValues)
         cursor.execute(add_authorValues)
         cursor.execute(add_authorListValues)
         cursor.execute(add_PCMemberValues)
         cursor.execute(add_reviewValues)
+        cnx.commit()

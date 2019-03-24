@@ -19,16 +19,20 @@ def index():
         session['user'] = login_form.username.data
         session['pass'] = login_form.password.data
         flash('Logging in as {}'.format(login_form.username.data))
-        return redirect('main_page', login_form)
+        return redirect('main_page')
     return render_template('login.html', form=login_form)
 
 
 @app.route('/main_page')
 def main_page():
-    cnx = mysql.connector.connect(user={{session['user']}}, password={{session['pass']}})
+    # Need to figure out how to get this to work with session[]
+    cnx = mysql.connector.connect(user='john', password='pass1234')
     cursor = cnx.cursor()
     # database initialization and creation functions contained here
     dbInit = DBCreation()
+    dbInit.create_database(cursor, cnx)
+    dbInit.create_table(cursor)
+    dbInit.init_values(cursor, cnx)
     # For each button that will be on the GUI for the project, a from will have to be created
     # i.e.: loginForm, createDB, addReviewers
     # Using the same xxx.is_submitted() function for each and flashing the message will be best
