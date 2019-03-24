@@ -2,6 +2,7 @@
 import mysql
 from mysql.connector import errorcode
 
+
 class DBCreation():
     dbName = 'sampledb'
 
@@ -91,22 +92,63 @@ class DBCreation():
                            "(paperid, abstractPaper, titlePaper, pdfPaper) "
                            "VALUES (3, 'absract3', 'title3','pdf3'),"
                            "(0, 'abstract0', 'title0','pdf0'),"
-                           "(5, 'abstract5', 'title5', 'pdf5')")
+                           "(5, 'abstract5', 'title5', 'pdf5'),"
+                           "(11, 'abstract11', 'title11','pdf11'),"
+                           "(2, 'abstract2', 'title2','pdf2'),"
+                           "(7, 'abstract7', 'title7','pdf7'),"
+                           "(1, 'abstract1', 'title1','pdf1'),"
+                           "(9, 'abstract9', 'title9','pdf9'),"
+                           "(10, 'abstract10', 'title10','pdf10'),"
+                           "(4, 'abstract4', 'title4','pdf4')")
 
         add_authorValues = ("INSERT INTO author "
                             "(nameAuthor, affiliationsAuthor, emailAuthor) "
-                            "VALUES (%s,%s,%s),"
-                            "()")
+                            "VALUES ('Mike Jones', 'None', 'mike@test.com'),"
+                            "('Duke Mickey', 'RCA', 'duke@test.com'),"
+                            "('Alex Doe', 'NAACP', 'alex@test.com'),"
+                            "('Nick Smith', 'None', 'nick@test.com'),"
+                            "('Poe Dameron', 'RBL', 'poe@rbl.com'),"
+                            "('D. Vader', 'EMPR', 'vader@sith.com'),"
+                            "('Luke Copyright', 'None', 'luke@censorship.com'),"
+                            "('Boy Wonder', 'Heroes', 'special@hero.com'),"
+                            "('Duperman', 'Knockoffs', 'dupe@notreal.com'),"
+                            "('Mattman', 'Knockoffs', 'matt@notreal.com')")
 
         add_authorListValues = ("INSERT INTO authorlist "
                                 "(paperid, email, significance) "
-                                "VALUES (%s,%s,%s)")
+                                "VALUES (3, 'mike@test.com', 0),"
+                                "(0, 'duke@test.com', 2),"
+                                "(5, 'alex@test.com', 4),"
+                                "(11, 'nick@test.com', 6),"
+                                "(2, 'poe@rbl.com', 8),"
+                                "(7, 'vader@sith.com', 10),"
+                                "(1, 'luke@censorship.com', 12),"
+                                "(9, 'special@hero.com', 1),"
+                                "(10, 'dupe@notreal.com', 3),"
+                                "(4, 'matt@notreal.com', 5)")
 
         add_PCMemberValues = ("INSERT INTO pcmember "
-                              "(memberid, namePCM, emailPCM) "
-                              "VALUES (%s,%s,%s)")
+                              "(namePCM, emailPCM) "
+                              "VALUES ('PCM3', 'email3@email3.com'),"
+                              "('PCM0', 'email0@email0.com'),"
+                              "('PCM5', 'email5@email5.com'),"
+                              "('PCM11', 'email11@email11.com'),"
+                              "('PCM2', 'email2@email2.com'),"
+                              "('PCM7', 'email7@email7.com'),"
+                              "('PCM1', 'email1@email1.com'),"
+                              "('PCM9', 'email9@email9.com'),"
+                              "('PCM10', 'email10@email10.com'),"
+                              "('PCM4', 'email4@email4.com')")
 
         add_reviewValues = ("INSERT INTO review "
                             "(reportid, dateReview, recommendationReview, commentReview, paperid, email) "
-                            "VALUES (%s,%s,%s,%s,%s,%s)")
-
+                            "VALUES (3, '3333-03-03', 'recommendationreview3', 'commentreview3', 3, 'email3@email3.com'),"
+                            "(0, '0000-00-00', 'recommendationreview0', 'commentreview0', 0, 'email0@email0.com'),"
+                            "(5, '5555-05-05', 'recommendationreview5', 'commentreview5', 5, 'email5@email5.com'),"
+                            "(11, '0011-11-11', 'recommendationreview11', 'commentreview11', 11, 'email11@email11.com'),"
+                            "(2, '2222-02-22', 'recommendationreview2', 'commentreview2', 2, 'email2@email2.com'),"
+                            "(7, '7777-07-07', 'recommendationreview7', 'commentreview7', 7, 'email7@email7.com'),"
+                            "(1, '1111-11-11', 'recommendationreview1', 'commentreview1', 1, 'email1@email1.com'),"
+                            "(9, '9998-09-09', 'recommendationreview9', 'commentreview9', 9, 'email9@email9.com'),"
+                            "(10, '1010-10-10', 'recommendationreview10', 'commentreview10', 10, 'email10@email10.com'),"
+                            "(4, '4444-04-04', 'recommendationreview4', 'commentreview4', 4, 'email4@email4.com')")
