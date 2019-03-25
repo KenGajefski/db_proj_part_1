@@ -46,6 +46,12 @@ def main_page():
 
     return render_template('main.html', createForm=createDB, assignReviewForm=assignReviewers)
 
+# This page will have fields in the form for adding a reviewer to a paper
+@app.route('/assign_reviewers', methods=['GET', 'POST'])
+def assign_reviewers_page():
+    assignReviewers = AssignReviewers()
+    return render_template('assign_reviewers.html', assignReviewForm=assignReviewers)
+
 
 if __name__ == '__main__':
     app.run(debug=True)
