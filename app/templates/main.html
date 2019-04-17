@@ -23,13 +23,30 @@
             Too bad Bootstrap doesn't work for us so we can make this look pretty.
         </h2>
     <div>
-        <form method="POST" action=''>
-        {{ createForm.submit() }}
+        <div>
+        <form method="POST" action="/main_page">
+            <p>
+                <input type="submit" value="Create Database" name="create-database"/>
+            </p>
         </form>
+        </div>
         <br>
-        <form method="POST" action=''>
-        {{ assignReviewForm.submit() }}
+        <div>
+        <form method="POST" action="/main_page">
+            <p>
+                {{ assignReviewForm.reviewer1 }}
+            </p>
+            <p>
+                {{ assignReviewForm.reviewer2 }}
+            </p>
+            <p>
+                {{ assignReviewForm.reviewer3 }}
+            </p>
+            <p>
+                <input type="submit" value="Assign Reviewers" name="assign-reviewers"/>
+            </p>
         </form>
+        </div>
     </div>
     </div>
 {% endblock %}

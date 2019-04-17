@@ -1,4 +1,4 @@
-from flask import Flask, render_template, flash, redirect, Session
+from flask import Flask, render_template, flash, redirect, Session, request
 from app import app
 from app.login_form import LoginForm
 from app.main_forms import CreateDB, AssignReviewers
@@ -28,7 +28,7 @@ def index():
 def main_page():
     # For each button that will be on the GUI for the project, a from will have to be created
     # i.e.: loginForm, createDB, addReviewers
-    # Using the same xxx.is_submitted() function for each and flashing the message will be best
+    # Using the same <form_name>.is_submitted() function for each and flashing the message will be best
     # Main will always be the rendered template
     cnx = mysql.connector.connect(user='john', password='pass1234')
     cursor = cnx.cursor()
@@ -36,13 +36,19 @@ def main_page():
     assignReviewers = AssignReviewers()
     # Need to figure out how to get this to work with session[]
     # database initialization and creation functions contained here
-    if createDB.is_submitted():
-        dbInit = DBCreation()
-        dbInit.create_database(cursor, cnx)
-        dbInit.create_table(cursor)
-        dbInit.init_values(cursor, cnx)
-        flash('Database created and initialized')
-        return redirect('main_page')
+
+    # This is how you differentiate which button is pressed on the page
+    if request.method == 'POST':
+        if "create-database" in request.form:
+            dbInit = DBCreation()
+            dbInit.create_database(cursor, cnx)
+            dbInit.create_table(cursor)
+            dbInit.init_values(cursor, cnx)
+            flash('Database created and initialized')
+            return redirect('main_page')
+        elif "assign-reviewers" in request.form:
+            flash('Assign button under construction')
+            return redirect('main_page')
 
     return render_template('main.html', createForm=createDB, assignReviewForm=assignReviewers)
 
