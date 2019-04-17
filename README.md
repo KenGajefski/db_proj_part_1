@@ -12,6 +12,7 @@ Required Software and Libraries
 -WTForms
 -Flask-MySQL
 -Flask-WTF
+--MySQL Connector
 ```
 
 This program also assumes that MySQL is setup with the required user account for the project part as well as running on port 3036 of the local machine.
