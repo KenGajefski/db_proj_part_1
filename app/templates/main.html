@@ -5,6 +5,11 @@
     <title>DB Project</title>
 </head>
 <body>
+<!---
+The 'block' is used for content that is unique to the page. If we were using Flask as intended, then there would
+be a base page in templates that would have all the content that would appear uniformaly across all pages. An
+example is something like a navigation bar or logo in the corner.
+-->
 {% block content %}
     <div>
         {% with messages = get_flashed_messages() %}
