@@ -1,8 +1,8 @@
-from flask import Flask, render_template, flash, redirect, Session, request
+from flask import Flask, render_template, flash, redirect, Session
 from app import app
 from app.login_form import LoginForm
 from app.main_forms import CreateDB, AssignReviewers
-from database import DBCreation
+from app.database import DBCreation
 import mysql.connector
 from mysql.connector import errorcode
 
