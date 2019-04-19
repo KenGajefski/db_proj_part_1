@@ -8,12 +8,13 @@ from datetime import date, datetime
 class DBCreation():
     dbName = 'sampledb'
 
-    # TODO: Values for paperid need to be AUTO_INCREMENT. When you do this using the connector library, an error of
-    # no default value is thrown. You can then add the data in through the shell and it will start at '2' instead of '1'
-    # We either need to swap over to another library or figure out how to do this in the front end when adding.
     TABLES = {}
     TABLES['paper'] = (
         "CREATE TABLE `paper` ("
+        # TODO: Values for paperid need to be AUTO_INCREMENT. When you do this using the connector library, an error of
+        # no default value is thrown. You can then add the data in through the shell and it will start at '2' instead 
+        # of '1' We either need to swap over to another library or figure out how to do this in the 
+        # front end when adding.
         " `paperid` INTEGER,"
         " `abstractPaper` VARCHAR(255),"
         " `titlePaper` VARCHAR(255),"
