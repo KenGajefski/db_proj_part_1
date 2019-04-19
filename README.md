@@ -10,7 +10,6 @@ Required Software and Libraries
 -Python 3.7.2
 -Flask
 -WTForms
--Flask-MySQL
 -Flask-WTF
 -MySQL Connector
 ```
