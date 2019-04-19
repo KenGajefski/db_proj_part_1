@@ -28,7 +28,7 @@ def index():
 
 @app.route('/main_page', methods=['GET', 'POST'])
 def main_page():
-    # For each button that will be on the GUI for the project, a from will have to be created
+    # For each button that will be on the GUI for the project, a form will have to be created
     # i.e.: loginForm, createDB, addReviewers
     # Using the same <form_name>.is_submitted() function for each and flashing the message will be best
     # Main will always be the rendered template

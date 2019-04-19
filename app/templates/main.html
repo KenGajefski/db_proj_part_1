@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>DB Project</title>
+    <link rel="stylesheet" type="text/css" href="/static/css/main.css">
 </head>
 <body>
 <!---
@@ -11,10 +12,10 @@ be a base page in templates that would have all the content that would appear un
 example is something like a navigation bar or logo in the corner.
 -->
 {% block content %}
-    <div>
+    <div class="main">
         {% with messages = get_flashed_messages() %}
         {% if messages %}
-        <ul>
+        <ul class="flashed">
             {% for message in messages %}
             <li>{{ message }}</li>
             {% endfor %}
