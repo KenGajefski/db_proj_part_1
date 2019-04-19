@@ -13,6 +13,9 @@ class AssignReviewers(FlaskForm):
     reviewer3 = StringField('Reviewer 3:')
     submit = SubmitField('Assign Reviewers')
 
-    
+
 class EditPapers(FlaskForm):
+    edit = StringField('Edit')
+    insert = StringField('Insert')
+    delete = StringField('Delete')
     submit = SubmitField('Insert/Delete/Update a paper')
