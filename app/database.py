@@ -8,6 +8,9 @@ from datetime import date, datetime
 class DBCreation():
     dbName = 'sampledb'
 
+    # TODO: Values for paperid need to be AUTO_INCREMENT. When you do this using the connector library, an error of
+    # no default value is thrown. You can then add the data in through the shell and it will start at '2' instead of '1'
+    # We either need to swap over to another library or figure out how to do this in the front end when adding.
     TABLES = {}
     TABLES['paper'] = (
         "CREATE TABLE `paper` ("
@@ -26,6 +29,7 @@ class DBCreation():
         " PRIMARY KEY (`emailAuthor`)"
         ") ENGINE=InnoDB")
 
+    # paperid should be AUTO_INCREMENT
     TABLES['authorList'] = (
         "CREATE TABLE `authorList` ("
         " `paperid` INTEGER,"
@@ -46,6 +50,7 @@ class DBCreation():
 
     TABLES['review'] = (
         "CREATE TABLE `review` ("
+        # reportid should also be AUTO_INCREMENT. See comments on declaration of 'paper' table.
         " `reportid` INTEGER,"
         # TODO: Python and MySQL Connector DO NOT play nice with DATE values. This is being changed for
         # the purpose of trying to get the program to work.
@@ -94,6 +99,8 @@ class DBCreation():
                 print("OK")
 
     def init_values(self, cursor, cnx):
+        # AUTO_INCREMENT values can be added by using NULL. But since that throws an error, we should just number
+        # these manually and do the rest in the front end
         add_paperValues = ("INSERT INTO paper "
                            "(paperid, abstractPaper, titlePaper, pdfPaper) "
                            "VALUES (3, 'abstract3', 'title3','pdf3'),"
