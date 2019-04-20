@@ -8,7 +8,7 @@
 <body>
 <!---
 The 'block' is used for content that is unique to the page. If we were using Flask as intended, then there would
-be a base page in templates that would have all the content that would appear uniformaly across all pages. An
+be a base page in templates that would have all the content that would appear uniformly across all pages. An
 example is something like a navigation bar or logo in the corner.
 -->
 {% block content %}
@@ -25,9 +25,6 @@ example is something like a navigation bar or logo in the corner.
     </div>
     <div align="center">
     <hr>
-        <h2>
-            Too bad Bootstrap doesn't work for us so we can make this look pretty.
-        </h2>
     <div>
         <div>
         <form method="POST" action="/main_page">
@@ -57,18 +54,22 @@ example is something like a navigation bar or logo in the corner.
         <form method="POST" action='/main_page'>
             <p>
                 Edit - Enter paper name:
-                {{ editPaperForm.edit }}
+                {{ editPaperForm.edit }} <input type="submit" value="Edit" name="edit-paper"/>
             </p>
             <p>
                 Insert - Enter paper name:
-                {{ editPaperForm.insert }}
+                {{ editPaperForm.insert }} <input type="submit" value="Insert" name="insert-paper"/>
             </p>
             <p>
                 Delete - Enter paper name:
-                {{ editPaperForm.delete }}
+                <input type="submit" value="Delete" name="delete-paper"/>
             </p>
+        </form>
+        <form method="POST" action='/main_page'>
             <p>
-                <input type="submit" value="Submit" name="manage-papers"/>
+                <input type="submit" value="Print Table" name="print-table"/>
+
+                {{ viewDB }}
             </p>
         </form>
     </div>
