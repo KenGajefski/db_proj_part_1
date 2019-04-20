@@ -1,11 +1,12 @@
 # This will hold all database functionality
+from flask_table import Table, Col
 import mysql
 import mysql.connector
 from mysql.connector import errorcode
 from datetime import date, datetime
 
 
-class DBCreation():
+class DBCreation:
     dbName = 'sampledb'
 
     # TODO: Values for paperid need to be AUTO_INCREMENT. When you do this using the connector library, an error of
@@ -63,7 +64,8 @@ class DBCreation():
         " FOREIGN KEY (`email`) REFERENCES `pcmember` (`emailPCM`)"
         ") ENGINE=InnoDB")
 
-    def drop_database(self, cursor):
+    @staticmethod
+    def drop_database(cursor):
         # Automatically drops db if it already exists so we don't have to do it via mySQL -Nick
         try:
             cursor.execute("DROP DATABASE IF EXISTS {}".format(DBCreation.dbName))
@@ -72,7 +74,8 @@ class DBCreation():
         except mysql.connector.Error as err:
             print("Failed dropping database: {}".format(err))
 
-    def create_database(self, cursor, cnx):
+    @staticmethod
+    def create_database(cursor, cnx):
         # TODO: Put in check to see if database exists, and drop if it does
         try:
             cursor.execute(
@@ -92,7 +95,8 @@ class DBCreation():
                 print(err)
                 exit(1)
 
-    def create_table(self, cursor):
+    @staticmethod
+    def create_table(cursor):
         for table_name in DBCreation.TABLES:
             table_description = DBCreation.TABLES[table_name]
             try:
@@ -106,7 +110,8 @@ class DBCreation():
             else:
                 print("OK")
 
-    def init_values(self, cursor, cnx):
+    @staticmethod
+    def init_values(cursor, cnx):
         # AUTO_INCREMENT values can be added by using NULL. But since that throws an error, we should just number
         # these manually and do the rest in the front end
         add_paperValues = ("INSERT INTO paper "
@@ -180,3 +185,29 @@ class DBCreation():
         cursor.execute(add_PCMemberValues)
         cursor.execute(add_reviewValues)
         cnx.commit()
+
+    @staticmethod
+    def edit_Paper(cursor, cnx):
+        try:
+            edit_paperValues = ("UPDATE paper SET abstractPaper = '1' WHERE paperID = INPUT".format(DBCreation.dbName))
+            cursor.execute(edit_paperValues)
+            cnx.commit()
+            print(cursor.rowcount, "record(s) affected".format(DBCreation.dbName))
+
+        except mysql.connector.Error as err:
+            print("Paper ID not found.".format(DBCreation.dbName))
+
+
+class Results(Table):
+
+    @staticmethod
+    def print():
+        id = Col('paperID', show=False)
+        abstractPaper = Col('abstractPaper')
+        titlePaper = Col('titlePaper')
+        pdfPaper = Col('pdfPaper')
+
+        print(id)
+        print(abstractPaper)
+        print(titlePaper)
+        print(pdfPaper)
