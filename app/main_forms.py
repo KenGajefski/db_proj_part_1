@@ -1,4 +1,5 @@
 from flask_wtf import FlaskForm
+from flask_table import Table, Col
 from wtforms import Form, FormField, StringField, SubmitField
 from wtforms.validators import DataRequired
 
@@ -14,7 +15,11 @@ class AssignReviewers(FlaskForm):
     submit = SubmitField('Assign Reviewers')
 
 
-class EditPapers(FlaskForm):
+class ViewTable(FlaskForm):
+    submit = SubmitField('Refresh Table')
+
+
+class EditPaper(FlaskForm):
     edit = StringField('Edit')
     insert = StringField('Insert')
     delete = StringField('Delete')
