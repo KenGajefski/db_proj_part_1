@@ -1,8 +1,8 @@
 from flask import Flask, render_template, flash, redirect, Session, request
 from app import app
 from app.login_form import LoginForm
-from app.main_forms import CreateDB, AssignReviewers, EditPapers
-from app.database import DBCreation
+from app.main_forms import CreateDB, AssignReviewers, EditPaper, ViewTable
+from app.database import DBCreation, Results
 import mysql.connector
 from mysql.connector import errorcode
 
@@ -37,14 +37,15 @@ def main_page():
     createDB = CreateDB()
     assignReviewers = AssignReviewers()
     # Added edit paper button -Nick
-    EditPaper = EditPapers()
+    editPaper = EditPaper()
+    printTable = ViewTable()
     # Need to figure out how to get this to work with session[]
     # database initialization and creation functions contained here
 
     # This is how you differentiate which button is pressed on the page
     if request.method == 'POST':
         if "create-database" in request.form:
-            dbInit = DBCreation()
+            dbInit = DBCreation
             dbInit.drop_database(cursor)
             dbInit.create_database(cursor, cnx)
             dbInit.create_table(cursor)
@@ -54,21 +55,18 @@ def main_page():
         elif "assign-reviewers" in request.form:
             flash('Assign button under construction')
             return redirect('main_page')
+        elif "edit-paper" in request.form:
+            dbEdit= DBCreation
+            dbEdit.edit_Paper(cursor, cnx)
+            flash('Paper edited')
+            return redirect('main_page')
+        elif "print-table" in request.form:
+            dbPrint = Results
+            dbPrint.print()
+            return redirect('main_page')
 
-    return render_template('main.html', createForm=createDB, assignReviewForm=assignReviewers, editPaperForm=EditPaper)
-
-# This page will have fields in the form for adding a reviewer to a paper
-@app.route('/assign_reviewers', methods=['GET', 'POST'])
-def assign_reviewers_page():
-    assignReviewers = AssignReviewers()
-    return render_template('assign_reviewers.html', assignReviewForm=assignReviewers)
-
-# Objective is to launch a dialogue box to prompt user for editing paper tuples
-@app.route('/editPapers', methods=['GET', 'POST'])
-def edit_papers_page():
-    EditPaper = EditPapers()
-    if request.method == 'POST':
-        return render_template('assign_reviewers.html', editPaperForm=EditPaper)
+    return render_template('main.html', createForm=createDB, assignReviewForm=assignReviewers, editPaperForm=editPaper,
+                           viewDB=printTable)
 
 
 if __name__ == '__main__':
