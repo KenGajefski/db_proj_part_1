@@ -1,17 +1,28 @@
-import mysql
-import mysql.connector
-from app.login_form import LoginForm
-
-
 class SearchFunc:
     @staticmethod
-    def searchFotouhi():
-        cnx = mysql.connector.connect(user='john', password='pass1234', database='sampledb')
-        cursor = cnx.cursor()
-        query = "SELECT nameAuthor FROM author WHERE nameAuthor ='Fotouhi'"
-        cursor.execute(query)
+    def searchFotouhi(cursor, cnx):
+
+        cursor.execute("USE sampleDB")
+        S1 = 'fotouhi@t.com'
+        S2 = 'fotouhi@t.com'
+
+        # Getting a SQL syntax error on line 16 - works on the SQL
+        # side but the conversion between SQL/Python is incorrect
+        #query = ("SELECT emailAuthor, email, A.paperID, P.paperID, titlePaper"
+        #         "FROM author, authorList A, paper P"
+        #         "WHERE emailAuthor = %s AND email = %s AND A.paperID = P.paperID")
+        query = "SELECT nameAuthor FROM author WHERE nameAuthor = 'Fotouhi'"
+        query2 = "SELECT titlePaper FROM author, authorList A, paper P WHERE emailAuthor = 'fotouhi@t.com' AND email = 'fotouhi@t.com' AND A.paperID = P.paperID;"
+
+        #cursor.execute(query)
+        cursor.execute(query2)
+
+        #cursor.execute(query, S1, S2)
 
         for (nameAuthor) in cursor:
-            print("{} is author of ").format(nameAuthor)
+            print("Fotouhi is author of", nameAuthor)
+        for (titlePaper) in cursor:
+            print("Fotouhi is author of", titlePaper)
+
         cursor.close()
         cnx.close()

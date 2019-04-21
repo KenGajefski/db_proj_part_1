@@ -4,11 +4,6 @@ CREATE DATABASE sampledb;
 
 USE sampledb;
 
-DROP USER 'john'@'localhost';
-FLUSH PRIVILEGES;
-CREATE USER 'john'@'localhost' IDENTIFIED BY 'pass1234';
-SELECT USER();
-
 CREATE TABLE paper (
     paperid INTEGER,
     abstractPaper VARCHAR(255),

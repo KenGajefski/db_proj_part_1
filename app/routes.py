@@ -64,7 +64,7 @@ def main_page():
             return redirect('main_page')
         elif "search-paper" in request.form:
             dbSearch = SearchFunc
-            dbSearch.searchFotouhi()
+            dbSearch.searchFotouhi(cursor, cnx)
             return redirect('main_page')
         elif "print-table" in request.form:
             dbPrint = Results

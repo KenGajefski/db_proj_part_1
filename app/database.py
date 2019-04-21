@@ -129,9 +129,9 @@ class DBCreation:
 
         add_authorValues = ("INSERT INTO author "
                             "(nameAuthor, affiliationsAuthor, emailAuthor) "
-                            "VALUES ('Mike Jones', 'None', 'mike@test.com'),"
-                            "('Duke Mickey', 'RCA', 'duke@test.com'),"
-                            "('Alex Doe', 'NAACP', 'alex@test.com'),"
+                            "VALUES ('Fotouhi', 'None', 'fotouhi@tes.com'),"
+                            "('Fotouhi', 'RCA', 'fotouhi@te.com'),"
+                            "('Fotouhi', 'NAACP', 'fotouhi@t.com'),"
                             "('Nick Smith', 'None', 'nick@test.com'),"
                             "('Poe Dameron', 'RBL', 'poe@rbl.com'),"
                             "('D. Vader', 'EMPR', 'vader@sith.com'),"
@@ -140,11 +140,11 @@ class DBCreation:
                             "('Duperman', 'Knockoffs', 'dupe@notreal.com'),"
                             "('Mattman', 'Knockoffs', 'matt@notreal.com')")
 
-        add_authorListValues = ("INSERT INTO authorlist "
-                                "(paperid, email, significance) "
-                                "VALUES (3, 'mike@test.com', 0),"
-                                "(0, 'duke@test.com', 2),"
-                                "(5, 'alex@test.com', 4),"
+        add_authorListValues = ("INSERT INTO authorList "
+                                "(paperID, email, significance) "
+                                "VALUES (3, 'fotouhi@tes.com', 0),"
+                                "(0, 'fotouhi@te.com', 2),"
+                                "(5, 'fotouhi@t.com', 4),"
                                 "(11, 'nick@test.com', 6),"
                                 "(2, 'poe@rbl.com', 8),"
                                 "(7, 'vader@sith.com', 10),"
@@ -153,7 +153,7 @@ class DBCreation:
                                 "(10, 'dupe@notreal.com', 3),"
                                 "(4, 'matt@notreal.com', 5)")
 
-        add_PCMemberValues = ("INSERT INTO pcmember "
+        add_PCMemberValues = ("INSERT INTO PCMember "
                               "(namePCM, emailPCM) "
                               "VALUES ('PCM3', 'email3@email3.com'),"
                               "('PCM0', 'email0@email0.com'),"
