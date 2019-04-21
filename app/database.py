@@ -64,6 +64,16 @@ class DBCreation():
         " FOREIGN KEY (`email`) REFERENCES `pcmember` (`emailPCM`)"
         ") ENGINE=InnoDB")
 
+    @staticmethod
+    def drop_database(self, cursor):
+        # Automatically drops db if it exists so we dont have to manually do it via mySQL
+        try:
+            cursor.execute("DROP DATABASE IF EXISTS {}".format(DBCreation.dbName))
+            print("Database deleted successfully")
+        except mysql.connector.Error as err:
+            print("Failed dropping database: {}".format(err))
+
+    @staticmethod
     def create_database(self, cursor, cnx):
         # TODO: Put in check to see if database exists, and drop if it does
         try:
@@ -83,6 +93,7 @@ class DBCreation():
                 print(err)
                 exit(1)
 
+    @staticmethod
     def create_table(self, cursor):
         for table_name in DBCreation.TABLES:
             table_description = DBCreation.TABLES[table_name]
@@ -97,6 +108,7 @@ class DBCreation():
             else:
                 print("OK")
 
+    @staticmethod
     def init_values(self, cursor, cnx):
         # AUTO_INCREMENT values can be added by using NULL. But since that throws an error, we should just number
         # these manually and do the rest in the front end
