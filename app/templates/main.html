@@ -8,7 +8,7 @@
 <body>
 <!---
 The 'block' is used for content that is unique to the page. If we were using Flask as intended, then there would
-be a base page in templates that would have all the content that would appear uniformaly across all pages. An
+be a base page in templates that would have all the content that would appear uniformly across all pages. An
 example is something like a navigation bar or logo in the corner.
 -->
 {% block content %}
@@ -110,6 +110,26 @@ example is something like a navigation bar or logo in the corner.
                     <input type="submit" value="Update Review" name="review-changes-upd">
                 </p>
             </form>
+        </div>
+        <div>
+            <p>
+                <input type="submit" value="List Papers by Fotouhi as the only author" name="prob-four">
+            </p>
+            <p>
+                <input type="submit" value="List Papers by Fotouhi as the first author" name="prob-five">
+            </p>
+            <p>
+                <input type="submit" value="List Papers coauthored by Lu and Fotouhi" name="prob-six">
+            </p>
+            <p>
+                <input type="submit" value="List PC Member(s) assigned to most papers" name="prob-seven">
+            </p>
+            <p>
+                <input type="submit" value="List PC Members not assigned any papers" name="prob-eight">
+            </p>
+            <p>
+                <input type="submit" value="List papers rejected by Matt and John" name="prob-nine">
+            </p>
         </div>
     </div>
     </div>
