@@ -3,6 +3,7 @@ from app import app
 from app.login_form import LoginForm
 from app.main_forms import AssignReviewers, PaperChanges, PCMemberChanges, ReviewChanges
 from database import DBCreation
+from problems import Prob4
 import mysql.connector
 from mysql.connector import errorcode
 
@@ -34,6 +35,8 @@ def main_page():
     paperChanges = PaperChanges()
     pcMemberChanges = PCMemberChanges()
     reviewChanges = ReviewChanges()
+    search4 = Prob4()
+
     # Need to figure out how to get this to work with session[]
     # database initialization and creation functions contained here
 
@@ -90,8 +93,9 @@ def main_page():
         # End Review change block
         # Project problem block
         elif "prob-four" in request.form:
-
-            flash('Problem 4 under construction')
+            prob4 = Prob4()
+            prob4.searchFotouhi(cursor, cnx)
+            flash('Search successful.')
             return redirect('main_page')
         elif "prob-five" in request.form:
             flash('Problem 5 under construction')
@@ -114,7 +118,7 @@ def main_page():
 
     return render_template('main.html', assignReviewForm=assignReviewers,
                            paperChangesForm=paperChanges, pcMemberChangesForm=pcMemberChanges,
-                           reviewChangesForm=reviewChanges)
+                           reviewChangesForm=reviewChanges, searchF=search4)
 
 
 if __name__ == '__main__':
