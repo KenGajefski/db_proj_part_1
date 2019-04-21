@@ -90,6 +90,7 @@ def main_page():
         # End Review change block
         # Project problem block
         elif "prob-four" in request.form:
+
             flash('Problem 4 under construction')
             return redirect('main_page')
         elif "prob-five" in request.form:
