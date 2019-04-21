@@ -1,6 +1,4 @@
-from flask import session
-
-
+# from flask import session
 class SearchFunc:
     @staticmethod
     def searchFotouhi(cursor, cnx):
@@ -15,4 +13,4 @@ class SearchFunc:
         cursor.close()
         cnx.close()
         # This is how you clear session
-        session.pop('name', None)
+        # session.pop('name', None)

@@ -30,7 +30,6 @@ def main_page():
     # Main will always be the rendered template
     cnx = mysql.connector.connect(user='john', password='pass1234')
     cursor = cnx.cursor()
-    createDB = CreateDB()
     assignReviewers = AssignReviewers()
     paperChanges = PaperChanges()
     pcMemberChanges = PCMemberChanges()
@@ -68,8 +67,8 @@ def main_page():
         elif "pcmem-changes-add" in request.form:
             flash('PC Member additions under construction')
             # TODO: Capture the rest of field data for other queries like this
-            session['name'] = pcMemberChanges.pcName.data
-            session['email'] = pcMemberChanges.pcEmail.data
+            # session['name'] = pcMemberChanges.pcName.data
+            # session['email'] = pcMemberChanges.pcEmail.data
             return redirect('main_page')
         elif "pcmem-changes-del" in request.form:
             flash('PC Member deletions under construction')
@@ -90,7 +89,7 @@ def main_page():
             return redirect('main_page')
         # End Review change block
 
-    return render_template('main.html', createForm=createDB, assignReviewForm=assignReviewers,
+    return render_template('main.html', assignReviewForm=assignReviewers,
                            paperChangesForm=paperChanges, pcMemberChangesForm=pcMemberChanges,
                            reviewChangesForm=reviewChanges)
 

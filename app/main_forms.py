@@ -3,10 +3,6 @@ from wtforms import Form, FormField, StringField, SubmitField, DateField, TextAr
 from wtforms.validators import DataRequired
 
 
-class CreateDB(FlaskForm):
-    submit = SubmitField('Create and Initialize Database')
-
-
 class AssignReviewers(FlaskForm):
     reviewer1 = StringField('Reviewer 1:', validators=[DataRequired()])
     reviewer2 = StringField('Reviewer 2:')
