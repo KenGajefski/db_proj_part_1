@@ -43,7 +43,7 @@ def main_page():
         if "create-database" in request.form:
             dbInit = DBCreation()
             # Drops database so it doesn't crash if already exists
-            dbInit.drop_database()
+            dbInit.drop_database(cursor)
             dbInit.create_database(cursor, cnx)
             dbInit.create_table(cursor)
             dbInit.init_values(cursor, cnx)
