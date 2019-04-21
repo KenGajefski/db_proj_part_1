@@ -1,7 +1,7 @@
 from flask import Flask, render_template, flash, redirect, session, request
 from app import app
 from app.login_form import LoginForm
-from app.main_forms import CreateDB, AssignReviewers
+from app.main_forms import CreateDB, AssignReviewers, PaperChanges, PCMemberChanges, ReviewChanges
 from database import DBCreation
 import mysql.connector
 from mysql.connector import errorcode
@@ -32,10 +32,13 @@ def main_page():
     cursor = cnx.cursor()
     createDB = CreateDB()
     assignReviewers = AssignReviewers()
+    paperChanges = PaperChanges()
+    pcMemberChanges = PCMemberChanges()
+    reviewChanges = ReviewChanges()
     # Need to figure out how to get this to work with session[]
     # database initialization and creation functions contained here
 
-    # This is how you differentiate which button is pressed on the page
+    # This is how you differentiate which button is pressed on the page. It's clearly ugly, but it'll do, pig.
     if request.method == 'POST':
         if "create-database" in request.form:
             dbInit = DBCreation()
@@ -44,11 +47,47 @@ def main_page():
             dbInit.init_values(cursor, cnx)
             flash('Database created and initialized')
             return redirect('main_page')
+        # Assign Reviewers
         elif "assign-reviewers" in request.form:
             flash('Assign button under construction')
             return redirect('main_page')
+        # Paper change block
+        elif "paper-changes-add" in request.form:
+            flash('Paper additions under construction')
+            return redirect('main_page')
+        elif "paper-changes-del" in request.form:
+            flash('Paper deletions under construction')
+            return redirect('main_page')
+        elif "paper-changes-upd" in request.form:
+            flash('Paper updates under construction')
+            return redirect('main_page')
+        # END Paper change block
+        # PC Member change block
+        elif "pcmem-changes-add" in request.form:
+            flash('PC Member additions under construction')
+            return redirect('main_page')
+        elif "pcmem-changes-del" in request.form:
+            flash('PC Member deletions under construction')
+            return redirect('main_page')
+        elif "pcmem-changes-upd" in request.form:
+            flash('PC Member updates under construction')
+            return redirect('main_page')
+        # END PC Member change block
+        # Review change block
+        elif "review-changes-add" in request.form:
+            flash('Review additions under construction')
+            return redirect('main_page')
+        elif "review-changes-add" in request.form:
+            flash('Review deletions under construction')
+            return redirect('main_page')
+        elif "review-changes-add" in request.form:
+            flash('Review updates under construction')
+            return redirect('main_page')
+        # End Review change block
 
-    return render_template('main.html', createForm=createDB, assignReviewForm=assignReviewers)
+    return render_template('main.html', createForm=createDB, assignReviewForm=assignReviewers,
+                           paperChangesForm=paperChanges, pcMemberChangesForm=pcMemberChanges,
+                           reviewChangesForm=reviewChanges)
 
 # This page will have fields in the form for adding a reviewer to a paper
 @app.route('/assign_reviewers', methods=['GET', 'POST'])

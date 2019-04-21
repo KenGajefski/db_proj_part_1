@@ -71,8 +71,6 @@ class DBCreation():
                 "CREATE DATABASE {} DEFAULT CHARACTER SET 'utf8'".format(DBCreation.dbName))
         except mysql.connector.Error as err:
             print("Failed creating database: {}".format(err))
-
-
         try:
             cursor.execute("USE {}".format(DBCreation.dbName))
         except mysql.connector.Error as err:

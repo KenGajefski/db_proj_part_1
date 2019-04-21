@@ -25,33 +25,91 @@ example is something like a navigation bar or logo in the corner.
     </div>
     <div align="center">
     <hr>
-        <h2>
-            Too bad Bootstrap doesn't work for us so we can make this look pretty.
-        </h2>
+        <!---
+        ===================================================================================================
+        We should put the visualization here. That way it's always at the top and you don't need to scroll
+        ===================================================================================================
+        --->
     <div>
         <div>
-        <form method="POST" action="/main_page">
-            <p>
-                <input type="submit" value="Create Database" name="create-database"/>
-            </p>
-        </form>
+            <form method="POST" action="/main_page">
+                <p>
+                    <input type="submit" value="Create Database" name="create-database"/>
+                </p>
+            </form>
         </div>
-        <br>
         <div>
-        <form method="POST" action="/main_page">
-            <p>
-                {{ assignReviewForm.reviewer1 }}
-            </p>
-            <p>
-                {{ assignReviewForm.reviewer2 }}
-            </p>
-            <p>
-                {{ assignReviewForm.reviewer3 }}
-            </p>
-            <p>
-                <input type="submit" value="Assign Reviewers" name="assign-reviewers"/>
-            </p>
-        </form>
+            <form method="POST" action="/main_page">
+                <p>
+                    {{ assignReviewForm.reviewer1.label }}{{ assignReviewForm.reviewer1 }}
+                </p>
+                <p>
+                    {{ assignReviewForm.reviewer2.label }}{{ assignReviewForm.reviewer2 }}
+                </p>
+                <p>
+                    {{ assignReviewForm.reviewer3.label }}{{ assignReviewForm.reviewer3 }}
+                </p>
+                <p>
+                    <input type="submit" value="Assign Reviewers" name="assign-reviewers"/>
+                </p>
+            </form>
+        </div>
+        <div>
+            <form method="POST" action="/main_page">
+                <p>
+                    {{ paperChangesForm.abstractPaper.label }}{{ paperChangesForm.abstractPaper }}
+                </p>
+                <p>
+                    {{ paperChangesForm.titlePaper.label }}{{ paperChangesForm.titlePaper }}
+                </p>
+                <p>
+                    {{ paperChangesForm.pdfPaper.label }}{{ paperChangesForm.pdfPaper }}
+                </p>
+                <p>
+                    <input type="submit" value="Create Paper" name="paper-changes-add">
+                    <input type="submit" value="Delete Paper" name="paper-changes-del">
+                    <input type="submit" value="Update Paper" name="paper-changes-upd">
+                </p>
+            </form>
+        </div>
+        <div>
+            <form method="POST" action="/main_page">
+                <p>
+                    {{ pcMemberChangesForm.pcName.label }}{{ pcMemberChangesForm.pcName }}
+                </p>
+                <p>
+                    {{ pcMemberChangesForm.pcEmail.label }}{{ pcMemberChangesForm.pcEmail }}
+                </p>
+                <p>
+                    <input type="submit" value="Create PC Member" name="pcmem-changes-add">
+                    <input type="submit" value="Delete PC Member" name="pcmem-changes-del">
+                    <input type="submit" value="Update PC Member" name="pcmem-changes-upd">
+                </p>
+            </form>
+        </div>
+        <div>
+            <form method="POST" action="/main_page">
+                <p>
+                    {{ reviewChangesForm.revDate.label }}{{ reviewChangesForm.revDate }}
+                </p>
+                <p>
+                    {{ reviewChangesForm.revRecc.label }}{{ reviewChangesForm.revRecc }}
+                </p>
+                <p>
+                    {{ reviewChangesForm.revComment.label }}{{ reviewChangesForm.revComment }}
+                </p>
+                <p>
+                    {{ reviewChangesForm.revPaperid.label }}{{ reviewChangesForm.revPaperid }}
+                </p>
+                <p>
+                    {{ reviewChangesForm.revEmail.label }}{{ reviewChangesForm.revEmail }}
+                </p>
+                <p>
+                    <input type="submit" value="Create Review" name="review-changes-add">
+                    <input type="submit" value="Delete Review" name="review-changes-del">
+                    <input type="submit" value="Update Review" name="review-changes-upd">
+                </p>
+            </form>
         </div>
     </div>
     </div>
