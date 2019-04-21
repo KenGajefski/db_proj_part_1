@@ -67,6 +67,9 @@ def main_page():
         # PC Member change block
         elif "pcmem-changes-add" in request.form:
             flash('PC Member additions under construction')
+            # TODO: Capture the rest of field data for other queries like this
+            session['name'] = pcMemberChanges.pcName.data
+            session['email'] = pcMemberChanges.pcEmail.data
             return redirect('main_page')
         elif "pcmem-changes-del" in request.form:
             flash('PC Member deletions under construction')
@@ -90,12 +93,6 @@ def main_page():
     return render_template('main.html', createForm=createDB, assignReviewForm=assignReviewers,
                            paperChangesForm=paperChanges, pcMemberChangesForm=pcMemberChanges,
                            reviewChangesForm=reviewChanges)
-
-# This page will have fields in the form for adding a reviewer to a paper
-@app.route('/assign_reviewers', methods=['GET', 'POST'])
-def assign_reviewers_page():
-    assignReviewers = AssignReviewers()
-    return render_template('assign_reviewers.html', assignReviewForm=assignReviewers)
 
 
 if __name__ == '__main__':
