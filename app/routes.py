@@ -2,7 +2,8 @@ from flask import Flask, render_template, flash, redirect, Session, request
 from app import app
 from app.login_form import LoginForm
 from app.main_forms import CreateDB, AssignReviewers, EditPaper, ViewTable
-from app.database import DBCreation, Results
+from database import DBCreation, Results
+from search import SearchFunc
 import mysql.connector
 from mysql.connector import errorcode
 
@@ -39,6 +40,7 @@ def main_page():
     # Added edit paper button -Nick
     editPaper = EditPaper()
     printTable = ViewTable()
+    dbSearch = SearchFunc()
     # Need to figure out how to get this to work with session[]
     # database initialization and creation functions contained here
 
@@ -56,9 +58,13 @@ def main_page():
             flash('Assign button under construction')
             return redirect('main_page')
         elif "edit-paper" in request.form:
-            dbEdit= DBCreation
+            dbEdit = DBCreation
             dbEdit.edit_Paper(cursor, cnx)
             flash('Paper edited')
+            return redirect('main_page')
+        elif "search-paper" in request.form:
+            dbSearch = SearchFunc
+            dbSearch.searchFotouhi()
             return redirect('main_page')
         elif "print-table" in request.form:
             dbPrint = Results
@@ -66,8 +72,7 @@ def main_page():
             return redirect('main_page')
 
     return render_template('main.html', createForm=createDB, assignReviewForm=assignReviewers, editPaperForm=editPaper,
-                           viewDB=printTable)
-
+                           viewDB=printTable, searchForm=dbSearch)
 
 if __name__ == '__main__':
     app.run(debug=True)
