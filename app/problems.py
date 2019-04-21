@@ -1,4 +1,4 @@
-# from flask import session
+# Rename to Prob 4
 class SearchFunc:
     @staticmethod
     def searchFotouhi(cursor, cnx):

@@ -1,7 +1,7 @@
 from flask import Flask, render_template, flash, redirect, session, request
 from app import app
 from app.login_form import LoginForm
-from app.main_forms import CreateDB, AssignReviewers, PaperChanges, PCMemberChanges, ReviewChanges
+from app.main_forms import AssignReviewers, PaperChanges, PCMemberChanges, ReviewChanges
 from database import DBCreation
 import mysql.connector
 from mysql.connector import errorcode
@@ -88,6 +88,28 @@ def main_page():
             flash('Review updates under construction')
             return redirect('main_page')
         # End Review change block
+        # Project problem block
+        elif "prob-four" in request.form:
+            flash('Problem 4 under construction')
+            return redirect('main_page')
+        elif "prob-five" in request.form:
+            flash('Problem 5 under construction')
+            return redirect('main_page')
+        elif "prob-six" in request.form:
+            flash('Problem 6 under construction')
+            return redirect('main_page')
+        elif "prob-seven" in request.form:
+            flash('Problem 7 under construction')
+            return redirect('main_page')
+        elif "prob-eight" in request.form:
+            flash('Problem 8 under construction')
+            return redirect('main_page')
+        elif "prob-nine" in request.form:
+            flash('Problem 9 under construction')
+            return redirect('main_page')
+        elif "prob-ten" in request.form:
+            flash('Problem 10 under construction')
+            return redirect('main_page')
 
     return render_template('main.html', assignReviewForm=assignReviewers,
                            paperChangesForm=paperChanges, pcMemberChangesForm=pcMemberChanges,
