@@ -1,4 +1,4 @@
-from flask import Flask, render_template, flash, redirect, Session, request
+from flask import Flask, render_template, flash, redirect, session, request
 from app import app
 from app.login_form import LoginForm
 from app.main_forms import CreateDB, AssignReviewers
@@ -9,8 +9,6 @@ from mysql.connector import errorcode
 
 # This is necessary for the app
 app.config['SECRET_KEY'] = 'the-penguin-is-a-most-serene-animal'
-# session is used for passing data between routes
-session = {}
 
 
 @app.route('/', methods=['GET', 'POST'])
@@ -19,8 +17,6 @@ def index():
     # This is clearly not secure, but is a quick and nasty auth method for the purpose of this project
     # All this does is check that the input for the username and password are equal to the credentials for user 'john'
     if login_form.is_submitted() and login_form.username.data == 'john' and login_form.password.data == 'pass1234':
-        session['user'] = login_form.username.data
-        session['pass'] = login_form.password.data
         flash('Logging in as {}'.format(login_form.username.data))
         return redirect('main_page')
     return render_template('login.html', form=login_form)
