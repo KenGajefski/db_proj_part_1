@@ -1,6 +1,6 @@
 # CSC 4710 - Database Project Part 1
 
-This is the first part of the project for CSC 4710. This part includes a front-end interface with buttons for interacting with the database.
+This is the repo for the final version of the CSC 4710 Project.
 
 ### Prerequisites
 
