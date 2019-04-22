@@ -5,7 +5,6 @@ from app.main_forms import AssignReviewers, PaperChanges, PCMemberChanges, Revie
 from database import DBCreation
 from problems import Prob4, Prob5, Prob6, Prob7, Prob8, Prob9, Prob10
 import mysql.connector
-from mysql.connector import errorcode
 
 
 # This is necessary for the app
@@ -68,10 +67,7 @@ def main_page():
         # END Paper change block
         # PC Member change block
         elif "pcmem-changes-add" in request.form:
-            flash('PC Member added.')
-            # TODO: Capture the rest of field data for other queries like this
-            # session['name'] = pcMemberChanges.pcName.data
-            # session['email'] = pcMemberChanges.pcEmail.data
+            flash('PC Member added in PCMember table.')
             return redirect('main_page')
         elif "pcmem-changes-del" in request.form:
             flash('PC Member deleted from PCMember table.')
