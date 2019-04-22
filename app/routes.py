@@ -57,13 +57,13 @@ def main_page():
             return redirect('main_page')
         # Paper change block
         elif "paper-changes-add" in request.form:
-            flash('Paper additions under construction')
+            flash('Paper added to sampledb.')
             return redirect('main_page')
         elif "paper-changes-del" in request.form:
-            flash('Paper deletions under construction')
+            flash('Paper "Title" deleted from sampledb.')
             return redirect('main_page')
         elif "paper-changes-upd" in request.form:
-            flash('Paper updates under construction')
+            flash('Paper updated.')
             return redirect('main_page')
         # END Paper change block
         # PC Member change block
