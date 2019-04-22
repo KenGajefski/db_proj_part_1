@@ -58,7 +58,7 @@ class DBCreation:
         " `dateReview` DATE,"
         " `recommendationReview` VARCHAR(1),"
         " `commentReview` VARCHAR(255),"
-        " `paperid` INTEGER NOT NULL UNIQUE,"
+        " `paperid` INTEGER NOT NULL,"
         " `email1` VARCHAR(255) NOT NULL UNIQUE,"
         " FOREIGN KEY (`paperid`) REFERENCES `paper` (`paperid`),"
         " FOREIGN KEY (`email1`) REFERENCES `pcmember` (`emailPCM`)"
