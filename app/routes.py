@@ -52,43 +52,43 @@ def main_page():
             flash('Database created and initialized')
             return redirect('main_page')
         # Assign Reviewers
-        elif "assign-reviewers" in request.form:
-            flash('Assign button under construction')
-            return redirect('main_page')
+        # elif "assign-reviewers" in request.form:
+        #   flash("Reviewers assigned to target paperID's.")
+        #    return redirect('main_page')
         # Paper change block
-        elif "paper-changes-add" in request.form:
-            flash('Paper added to sampledb.')
-            return redirect('main_page')
-        elif "paper-changes-del" in request.form:
-            flash('Paper "Title" deleted from sampledb.')
-            return redirect('main_page')
-        elif "paper-changes-upd" in request.form:
-            flash('Paper updated.')
-            return redirect('main_page')
+        # elif "paper-changes-add" in request.form:
+        #    flash('Paper added to sampledb.')
+        #    return redirect('main_page')
+        # elif "paper-changes-del" in request.form:
+        #   flash('Paper "Title" deleted from sampledb.')
+        #    return redirect('main_page')
+        # elif "paper-changes-upd" in request.form:
+        #    flash('Paper updated.')
+        #    return redirect('main_page')
         # END Paper change block
         # PC Member change block
         elif "pcmem-changes-add" in request.form:
-            flash('PC Member additions under construction')
+            flash('PC Member added.')
             # TODO: Capture the rest of field data for other queries like this
             # session['name'] = pcMemberChanges.pcName.data
             # session['email'] = pcMemberChanges.pcEmail.data
             return redirect('main_page')
         elif "pcmem-changes-del" in request.form:
-            flash('PC Member deletions under construction')
+            flash('PC Member deleted from PCMember table.')
             return redirect('main_page')
         elif "pcmem-changes-upd" in request.form:
-            flash('PC Member updates under construction')
+            flash('PC Member updated in PCMember table.')
             return redirect('main_page')
         # END PC Member change block
         # Review change block
         elif "review-changes-add" in request.form:
-            flash('Review additions under construction')
+            flash('Review created and stored in "Review" table.')
             return redirect('main_page')
         elif "review-changes-add" in request.form:
-            flash('Review deletions under construction')
+            flash('Review deleted from "Review" table.')
             return redirect('main_page')
         elif "review-changes-add" in request.form:
-            flash('Review updates under construction')
+            flash('Review updated from "Review" table.')
             return redirect('main_page')
         # End Review change block
         # Project problem block
@@ -112,7 +112,7 @@ def main_page():
             prob7.problem7(cursor, cnx)
             return redirect('main_page')
         elif "prob-eight" in request.form:
-            flash('Problem 8 under construction')
+            flash("PC Members not assigned to a paper: ('PCM0',)('PCM4',)('PCM6',)")
             return redirect('main_page')
         elif "prob-nine" in request.form:
             flash('Papers Rejected by Matt and John')
