@@ -108,7 +108,8 @@ def main_page():
             prob6.problem6(cursor, cnx)
             return redirect('main_page')
         elif "prob-seven" in request.form:
-            flash('Problem 7 under construction')
+            prob7 = Prob7()
+            prob7.problem7(cursor, cnx)
             return redirect('main_page')
         elif "prob-eight" in request.form:
             flash('Problem 8 under construction')

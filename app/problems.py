@@ -54,13 +54,19 @@ class Prob6:
         for (titlePaper) in cursor:
             flash("The title of the paper is: {}".format(titlePaper))
 
-        # for (titlePaper) in cursor:
-        #    flash("Papers coauthored by Lu and Fotouhi are {}".format(titlePaper))
-
 
 class Prob7:
-    print('placeholder')
+    def problem7(self, cursor, cnx):
+        cursor.execute("USE sampledb;")
+        query = ("SELECT email FROM review GROUP BY email HAVING COUNT(*) > 1;")
+        cursor.execute(query)
+        for (email) in cursor:
+            flash("The email of the PCMember(s) who reviews the most papers is {}".format(email))
 
+        query2=("SELECT namePCM FROM PCMember WHERE emailPCM = 'email0@email0.com';")
+        cursor.execute(query2)
+        for (namePCM) in cursor:
+            flash("The name of the reviewer with email {} is {}".format(email, namePCM))
 
 class Prob8:
     print('placeholder')
@@ -69,7 +75,7 @@ class Prob8:
 class Prob9:
     def problem9(self, cursor):
         cursor.execute("USE sampledb;")
-        query='SELECT paperid FROM review WHERE recommendationReview="N" AND email="matt@test.com" OR email="john@test.com"'
+        query='SELECT paperid FROM review WHERE recommendationReview="N" AND email = "matt@test.com" OR email = "john@test.com"'
         cursor.execute(query)
         for (paperid) in cursor:
             flash('Rejected paper id: {}'.format(paperid))
