@@ -3,7 +3,7 @@ from app import app
 from app.login_form import LoginForm
 from app.main_forms import AssignReviewers, PaperChanges, PCMemberChanges, ReviewChanges
 from database import DBCreation
-from problems import Prob4
+from problems import Prob4, Prob5, Prob6
 import mysql.connector
 from mysql.connector import errorcode
 
@@ -94,14 +94,18 @@ def main_page():
         # Project problem block
         elif "prob-four" in request.form:
             prob4 = Prob4()
-            prob4.searchFotouhi(cursor, cnx)
+            prob4.problem4(cursor, cnx)
             flash('Search successful.')
             return redirect('main_page')
         elif "prob-five" in request.form:
-            flash('Problem 5 under construction')
+            prob5 = Prob5()
+            prob5.problem5(cursor, cnx)
+            flash('Search successful.')
             return redirect('main_page')
         elif "prob-six" in request.form:
-            flash('Problem 6 under construction')
+            prob6 = Prob6()
+            prob6.problem6(cursor, cnx)
+            flash('Search successful.')
             return redirect('main_page')
         elif "prob-seven" in request.form:
             flash('Problem 7 under construction')
