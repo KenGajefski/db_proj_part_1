@@ -60,14 +60,8 @@ class DBCreation:
         " `commentReview` VARCHAR(255),"
         " `paperid` INTEGER NOT NULL UNIQUE,"
         " `email1` VARCHAR(255) NOT NULL UNIQUE,"
-        " `email2` VARCHAR(255) UNIQUE,"
-        " `email3` VARCHAR(255) UNIQUE,"
-        " `email4` VARCHAR(255) UNIQUE,"
-        " `email5` VARCHAR(255) UNIQUE,"
         " FOREIGN KEY (`paperid`) REFERENCES `paper` (`paperid`),"
-        " FOREIGN KEY (`email1`) REFERENCES `pcmember` (`emailPCM`),"
-        " FOREIGN KEY (`email2`) REFERENCES `pcmember` (`emailPCM`),"
-        " FOREIGN KEY (`email3`) REFERENCES `pcmember` (`emailPCM`)"
+        " FOREIGN KEY (`email1`) REFERENCES `pcmember` (`emailPCM`)"
         ") ENGINE=InnoDB")
 
     def drop_database(self, cursor):
@@ -169,19 +163,18 @@ class DBCreation:
                               "('John', 'john@test.com')")
 
         add_reviewValues = ("INSERT INTO review "
-                            "(reportid, dateReview, recommendationReview, commentReview, paperid, "
-                            "email1, email2, email3) "
-                            "VALUES (0, current_date() , 'Y', 'commentreview0', 0, 'matt@test.com', 'john@test.com', NULL),"
-                            "(1, current_date(), 'Y', 'commentreview1', 1, 'email0@email0.com', 'email2@email2.com', NULL),"
-                            "(2, current_date(), 'N', 'commentreview2', 2, 'email1@email1.com', NULL, NULL),"
-                            "(3, current_date(), 'N', 'commentreview3', 3, 'email12@email2.com', NULL, NULL),"
-                            "(4, current_date(), 'N', 'commentreview4', 4, 'email3@email3.com', NULL, NULL),"
-                            "(5, current_date(), 'N', 'commentreview5', 5, 'email4@email4.com', NULL, NULL),"
+                            "(reportid, dateReview, recommendationReview, commentReview, paperid, email1) "
+                            "VALUES (0, current_date() , 'Y', 'commentreview0', 0, 'matt@test.com'),"
+                            "(1, current_date(), 'Y', 'commentreview1', 1, 'email0@email0.com'),"
+                            "(2, current_date(), 'N', 'commentreview2', 2, 'email1@email1.com'),"
+                            "(3, current_date(), 'N', 'commentreview3', 3, 'email12@email2.com'),"
+                            "(4, current_date(), 'N', 'commentreview4', 4, 'email3@email3.com'),"
+                            "(5, current_date(), 'N', 'commentreview5', 5, 'email4@email4.com'),"
                             # email5 is NOT assigned to any papers
-                            "(6, current_date(), 'N', 'commentreview6', 6, 'email6@email6.com', NULL, NULL),"
-                            "(7, current_date(), 'N', 'commentreview7', 7, 'email6@email6.com', NULL, NULL),"
-                            "(8, current_date(), 'Y', 'commentreview8', 8, 'email7@email7.com', 'email5@email5.com', NULL),"
-                            "(9, current_date(), 'N', 'commentreview9', 9, 'email8@email8.com', NULL, NULL)")
+                            "(6, current_date(), 'N', 'commentreview6', 6, 'email6@email6.com'),"
+                            "(7, current_date(), 'N', 'commentreview7', 7, 'email6@email6.com'),"
+                            "(8, current_date(), 'Y', 'commentreview8', 8, 'email7@email7.com'),"
+                            "(9, current_date(), 'N', 'commentreview9', 9, 'email8@email8.com')")
 
         cursor.execute(add_paperValues)
         cursor.execute(add_authorValues)
