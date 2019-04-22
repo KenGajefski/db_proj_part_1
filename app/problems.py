@@ -60,3 +60,23 @@ class Prob6:
 
         for (titlePaper) in cursor:
             flash("Papers coauthored by Lu and Fotouhi are {}".format(titlePaper))
+
+
+class Prob7:
+    print('placeholder')
+
+
+class Prob8:
+    print('placeholder')
+
+
+class Prob9:
+    def problem9(self, cursor):
+        cursor.execute("USE sampledb;")
+        query="SELECT paperID FROM review WHERE email = 'matt@test.com' AND email = 'john@test.com'"
+
+
+
+class Prob10:
+    print('placeholder')
+

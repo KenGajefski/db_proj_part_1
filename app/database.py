@@ -5,7 +5,7 @@ from mysql.connector import errorcode
 from datetime import date, datetime
 
 
-class DBCreation():
+class DBCreation:
     dbName = 'sampledb'
 
     TABLES = {}
@@ -42,7 +42,7 @@ class DBCreation():
 
     TABLES['PCMember'] = (
         "CREATE TABLE `pcmember` ("
-        " `memberid` INTEGER AUTO_INCREMENT,"
+        " `memberid` INTEGER,"
         " `namePCM` VARCHAR(255),"
         " `emailPCM` VARCHAR(255),"
         " PRIMARY KEY (`emailPCM`),"
@@ -59,9 +59,17 @@ class DBCreation():
         " `recommendationReview` VARCHAR(255),"
         " `commentReview` VARCHAR(255),"
         " `paperid` INTEGER NOT NULL UNIQUE,"
-        " `email` VARCHAR(255) NOT NULL UNIQUE,"
+        " `email1` VARCHAR(255) NOT NULL UNIQUE,"
+        " `email2` VARCHAR(255) UNIQUE,"
+        " `email3` VARCHAR(255) UNIQUE,"
+        " `email4` VARCHAR(255) UNIQUE,"
+        " `email5` VARCHAR(255) UNIQUE,"
         " FOREIGN KEY (`paperid`) REFERENCES `paper` (`paperid`),"
-        " FOREIGN KEY (`email`) REFERENCES `pcmember` (`emailPCM`)"
+        " FOREIGN KEY (`email1`) REFERENCES `pcmember` (`emailPCM`),"
+        " FOREIGN KEY (`email2`) REFERENCES `pcmember` (`emailPCM`),"
+        " FOREIGN KEY (`email3`) REFERENCES `pcmember` (`emailPCM`),"
+        " FOREIGN KEY (`email4`) REFERENCES `pcmember` (`emailPCM`),"
+        " FOREIGN KEY (`email5`) REFERENCES `pcmember` (`emailPCM`)"
         ") ENGINE=InnoDB")
 
     def drop_database(self, cursor):
@@ -150,7 +158,7 @@ class DBCreation():
         add_PCMemberValues = ("INSERT INTO pcmember "
                               "(namePCM, emailPCM) "
                               "VALUES ('PCM3', 'email3@email3.com'),"
-                              "('PCM0', 'email0@email0.com'),"
+                              "('PCM6', 'email0@email0.com'),"
                               "('PCM5', 'email5@email5.com'),"
                               "('PCM11', 'email11@email11.com'),"
                               "('PCM2', 'email2@email2.com'),"
@@ -161,17 +169,18 @@ class DBCreation():
                               "('PCM4', 'email4@email4.com')")
 
         add_reviewValues = ("INSERT INTO review "
-                            "(reportid, dateReview, recommendationReview, commentReview, paperid, email) "
-                            "VALUES (3, current_date() , 'recommendationreview3', 'commentreview3', 3, 'email3@email3.com'),"
-                            "(0, current_date(), 'recommendationreview0', 'commentreview0', 0, 'email0@email0.com'),"
-                            "(5, current_date(), 'recommendationreview5', 'commentreview5', 5, 'email5@email5.com'),"
-                            "(11, current_date(), 'recommendationreview11', 'commentreview11', 11, 'email11@email11.com'),"
-                            "(2, current_date(), 'recommendationreview2', 'commentreview2', 2, 'email2@email2.com'),"
-                            "(7, current_date(), 'recommendationreview7', 'commentreview7', 7, 'email7@email7.com'),"
-                            "(1, current_date(), 'recommendationreview1', 'commentreview1', 1, 'email1@email1.com'),"
-                            "(9, current_date(), 'recommendationreview9', 'commentreview9', 9, 'email9@email9.com'),"
-                            "(10, current_date(), 'recommendationreview10', 'commentreview10', 10, 'email10@email10.com'),"
-                            "(4, current_date(), 'recommendationreview4', 'commentreview4', 4, 'email4@email4.com')")
+                            "(reportid, dateReview, recommendationReview, commentReview, paperid, "
+                            "email1, email2, email3, email4, email5) "
+                            "VALUES (3, current_date() , 'N', 'commentreview3', 3, 'matt@test.com', 'john@test.com', NULL, NULL, NULL),"
+                            "(0, current_date(), 'Y', 'commentreview0', 0, 'email0@email0.com', NULL, NULL, NULL, NULL),"
+                            "(5, current_date(), 'Y', 'commentreview5', 5, 'email5@email5.com', NULL, NULL, NULL, NULL),"
+                            "(11, current_date(), 'Y', 'commentreview11', 11, 'email11@email11.com', NULL, NULL, NULL, NULL),"
+                            "(2, current_date(), 'N', 'commentreview2', 2, 'email2@email2.com', NULL, NULL, NULL, NULL),"
+                            "(7, current_date(), 'N', 'commentreview7', 7, 'email7@email7.com', NULL, NULL, NULL, NULL),"
+                            "(1, current_date(), 'N', 'commentreview1', 1, 'email1@email1.com', NULL, NULL, NULL, NULL),"
+                            "(9, current_date(), 'Y', 'commentreview9', 9, 'email9@email9.com', NULL, NULL, NULL, NULL),"
+                            "(10, current_date(), 'Y', 'commentreview10', 10, 'email10@email10.com', NULL, NULL, NULL, NULL),"
+                            "(4, current_date(), 'N', 'commentreview4', 4, 'email4@email4.com', NULL, NULL, NULL, NULL)")
 
         cursor.execute(add_paperValues)
         cursor.execute(add_authorValues)
