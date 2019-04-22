@@ -167,11 +167,10 @@ class DBCreation:
                             "VALUES (0, current_date() , 'Y', 'commentreview0', 0, 'matt@test.com'),"
                             "(1, current_date(), 'Y', 'commentreview1', 1, 'email0@email0.com'),"
                             "(2, current_date(), 'N', 'commentreview2', 2, 'email1@email1.com'),"
-                            "(3, current_date(), 'N', 'commentreview3', 3, 'email12@email2.com'),"
+                            "(3, current_date(), 'N', 'commentreview3', 3, 'email2@email2.com'),"
                             "(4, current_date(), 'N', 'commentreview4', 4, 'email3@email3.com'),"
                             "(5, current_date(), 'N', 'commentreview5', 5, 'email4@email4.com'),"
-                            # email5 is NOT assigned to any papers
-                            "(6, current_date(), 'N', 'commentreview6', 6, 'email6@email6.com'),"
+                            "(6, current_date(), 'N', 'commentreview6', 6, 'email5@email5.com'),"
                             "(7, current_date(), 'N', 'commentreview7', 7, 'email6@email6.com'),"
                             "(8, current_date(), 'Y', 'commentreview8', 8, 'email7@email7.com'),"
                             "(9, current_date(), 'N', 'commentreview9', 9, 'email8@email8.com')")
