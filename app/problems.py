@@ -1,7 +1,6 @@
 from flask import flash
 
 class Prob4:
-    @staticmethod
     def searchFotouhi(cursor, cnx):
         cursor.execute("USE sampleDB")
 
@@ -16,3 +15,10 @@ class Prob4:
         cnx.close()
         # This is how you clear session
         # session.pop('name', None)
+
+class Prob5:
+    def problem5(cursor, cnx):
+        cursor.execute("USE sampleDB")
+
+        for (titlePaper) in cursor:
+            flash("Fotouhi is first author of {}".format(titlePaper))
