@@ -15,7 +15,7 @@ class DBCreation:
         # no default value is thrown. You can then add the data in through the shell and it will start at '2' instead 
         # of '1' We either need to swap over to another library or figure out how to do this in the 
         # front end when adding.
-        " `paperid` INTEGER,"
+        " `paperid` INTEGER UNIQUE,"
         " `abstractPaper` VARCHAR(255),"
         " `titlePaper` VARCHAR(255),"
         " `pdfPaper` VARCHAR(255),"
@@ -52,7 +52,7 @@ class DBCreation:
     TABLES['review'] = (
         "CREATE TABLE `review` ("
         # reportid should also be AUTO_INCREMENT. See comments on declaration of 'paper' table.
-        " `reportid` INTEGER,"
+        " `reportid` INTEGER UNIQUE,"
         # TODO: Python and MySQL Connector DO NOT play nice with DATE values. This is being changed for
         # the purpose of trying to get the program to work.
         " `dateReview` DATE,"
@@ -165,7 +165,7 @@ class DBCreation:
         add_reviewValues = ("INSERT INTO review "
                             "(reportid, dateReview, recommendationReview, commentReview, paperid, email1) "
                             "VALUES (0, current_date() , 'Y', 'commentreview0', 0, 'matt@test.com'),"
-                            "(1, current_date(), 'Y', 'commentreview1', 1, 'email0@email0.com'),"
+                            "(1, current_date(), 'Y', 'commentreview1', 0, 'email0@email0.com'),"
                             "(2, current_date(), 'N', 'commentreview2', 2, 'email1@email1.com'),"
                             "(3, current_date(), 'N', 'commentreview3', 3, 'email2@email2.com'),"
                             "(4, current_date(), 'N', 'commentreview4', 4, 'email3@email3.com'),"

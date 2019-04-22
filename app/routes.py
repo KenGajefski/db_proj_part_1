@@ -3,7 +3,7 @@ from app import app
 from app.login_form import LoginForm
 from app.main_forms import AssignReviewers, PaperChanges, PCMemberChanges, ReviewChanges
 from database import DBCreation
-from problems import Prob4, Prob5, Prob6
+from problems import Prob4, Prob5, Prob6, Prob7, Prob8, Prob9, Prob10
 import mysql.connector
 from mysql.connector import errorcode
 
@@ -93,19 +93,19 @@ def main_page():
         # End Review change block
         # Project problem block
         elif "prob-four" in request.form:
+            flash('Search successful.')
             prob4 = Prob4()
             prob4.problem4(cursor, cnx)
-            flash('Search successful.')
             return redirect('main_page')
         elif "prob-five" in request.form:
+            flash('Search successful.')
             prob5 = Prob5()
             prob5.problem5(cursor, cnx)
-            flash('Search successful.')
             return redirect('main_page')
         elif "prob-six" in request.form:
+            flash('Search successful.')
             prob6 = Prob6()
             prob6.problem6(cursor, cnx)
-            flash('Search successful.')
             return redirect('main_page')
         elif "prob-seven" in request.form:
             flash('Problem 7 under construction')
@@ -117,7 +117,9 @@ def main_page():
             flash('Problem 9 under construction')
             return redirect('main_page')
         elif "prob-ten" in request.form:
-            flash('Problem 10 under construction')
+            flash('Approved Papers List')
+            prob10 = Prob10()
+            prob10.problem10(cursor)
             return redirect('main_page')
 
     return render_template('main.html', assignReviewForm=assignReviewers,

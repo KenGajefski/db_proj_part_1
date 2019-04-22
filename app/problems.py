@@ -1,7 +1,6 @@
 from flask import flash
 
 class Prob4:
-
     def problem4(self, cursor, cnx):
 
         cursor.execute("USE sampleDB")
@@ -73,6 +72,11 @@ class Prob9:
 
 
 class Prob10:
-    # Currently changing DB schema to be able to do this question
+    def problem10(self,cursor):
+        cursor.execute('USE sampledb')
+        query='SELECT paperid FROM review WHERE recommendationReview="Y" HAVING COUNT(*) > 2'
+        cursor.execute(query)
+        for (paperid) in cursor:
+            flash('Approved paper id: {}'.format(paperid))
     print('placeholder')
 
