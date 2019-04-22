@@ -59,9 +59,9 @@ class DBCreation:
         " `recommendationReview` VARCHAR(1),"
         " `commentReview` VARCHAR(255),"
         " `paperid` INTEGER NOT NULL,"
-        " `email1` VARCHAR(255) NOT NULL,"
+        " `email` VARCHAR(255) NOT NULL,"
         " FOREIGN KEY (`paperid`) REFERENCES `paper` (`paperid`),"
-        " FOREIGN KEY (`email1`) REFERENCES `pcmember` (`emailPCM`)"
+        " FOREIGN KEY (`email`) REFERENCES `pcmember` (`emailPCM`)"
         ") ENGINE=InnoDB")
 
     def drop_database(self, cursor):
@@ -163,7 +163,7 @@ class DBCreation:
                               "('John', 'john@test.com')")
 
         add_reviewValues = ("INSERT INTO review "
-                            "(reportid, dateReview, recommendationReview, commentReview, paperid, email1) "
+                            "(reportid, dateReview, recommendationReview, commentReview, paperid, email) "
                             "VALUES (0, current_date() , 'Y', 'commentreview0', 0, 'matt@test.com'),"
                             "(1, current_date(), 'Y', 'commentreview1', 0, 'email0@email0.com'),"
                             "(2, current_date(), 'N', 'commentreview2', 2, 'email1@email1.com'),"

@@ -69,7 +69,7 @@ class Prob8:
 class Prob9:
     def problem9(self, cursor):
         cursor.execute("USE sampledb;")
-        query='SELECT paperid FROM review WHERE recommendationReview="N" AND email1="matt@test.com" OR email1="john@test.com"'
+        query='SELECT paperid FROM review WHERE recommendationReview="N" AND email="matt@test.com" OR email="john@test.com"'
         cursor.execute(query)
         for (paperid) in cursor:
             flash('Rejected paper id: {}'.format(paperid))
