@@ -73,7 +73,6 @@ class Prob8:
 class Prob9:
     def problem9(self, cursor):
         cursor.execute("USE sampledb;")
-        query="SELECT paperID FROM review WHERE email = 'matt@test.com' AND email = 'john@test.com'"
 
 
 
