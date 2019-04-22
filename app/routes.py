@@ -114,7 +114,9 @@ def main_page():
             flash('Problem 8 under construction')
             return redirect('main_page')
         elif "prob-nine" in request.form:
-            flash('Problem 9 under construction')
+            flash('Papers Rejected by Matt and John')
+            prob9 = Prob9()
+            prob9.problem9(cursor)
             return redirect('main_page')
         elif "prob-ten" in request.form:
             flash('Approved Papers List')

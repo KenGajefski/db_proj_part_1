@@ -59,7 +59,7 @@ class DBCreation:
         " `recommendationReview` VARCHAR(1),"
         " `commentReview` VARCHAR(255),"
         " `paperid` INTEGER NOT NULL,"
-        " `email1` VARCHAR(255) NOT NULL UNIQUE,"
+        " `email1` VARCHAR(255) NOT NULL,"
         " FOREIGN KEY (`paperid`) REFERENCES `paper` (`paperid`),"
         " FOREIGN KEY (`email1`) REFERENCES `pcmember` (`emailPCM`)"
         ") ENGINE=InnoDB")
@@ -173,7 +173,9 @@ class DBCreation:
                             "(6, current_date(), 'N', 'commentreview6', 6, 'email5@email5.com'),"
                             "(7, current_date(), 'N', 'commentreview7', 7, 'email6@email6.com'),"
                             "(8, current_date(), 'Y', 'commentreview8', 8, 'email7@email7.com'),"
-                            "(9, current_date(), 'N', 'commentreview9', 9, 'email8@email8.com')")
+                            "(9, current_date(), 'N', 'commentreview9', 9, 'email8@email8.com'),"
+                            "(10, current_date(), 'N', 'commentReview10', 5, 'matt@test.com'),"
+                            "(11, current_date(), 'N', 'commentReview11', 9, 'john@test.com')")
 
         cursor.execute(add_paperValues)
         cursor.execute(add_authorValues)
