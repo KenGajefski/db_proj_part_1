@@ -1,5 +1,34 @@
 from flask import flash
 
+
+class Paper:
+    def insert(self, cursor, cnx, user_id, user_abst, user_title, user_pdf):
+        cursor.execute("USE sampledb")
+        query = 'INSERT INTO paper (paperid, abstractPaper, titlePaper, pdfPaper) VALUES (%s, %s, %s, %s)'
+        cursor.execute(query, (user_id, user_abst, user_title, user_pdf))
+        cnx.commit()
+        query2='SELECT paperid, abstractPaper, titlePaper, pdfPaper FROM paper WHERE paperid=%s'
+        cursor.execute(query2, (user_id,))
+        for (paperid) in cursor:
+            flash("Inserted paper with id: {}".format(paperid))
+
+    def delete_paper(self, cursor, cnx, user_id):
+        cursor.execute("USE sampledb")
+        query1 = 'DELETE FROM review WHERE paperid=%s'
+        query2 = 'DELETE FROM authorlist WHERE paperid=%s'
+        query3 = 'DELETE FROM paper WHERE paperid=%s'
+        cursor.execute(query1, (user_id,))
+        cursor.execute(query2, (user_id,))
+        cursor.execute(query3, (user_id,))
+        cnx.commit()
+
+    def update_paper(self, cursor, cnx, user_id, user_abst, user_title, user_pdf):
+        cursor.execute("USE sampledb")
+        query = 'UPDATE paper SET abstractPaper=%s, titlePaper=%s, pdfPaper=%s WHERE paperid=%s'
+        cursor.execute(query, (user_abst, user_title, user_pdf, user_id))
+        cnx.commit()
+
+
 class Prob4:
     def problem4(self, cursor, cnx):
 

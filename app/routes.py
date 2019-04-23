@@ -3,7 +3,7 @@ from app import app
 from app.login_form import LoginForm
 from app.main_forms import AssignReviewers, PaperChanges, PCMemberChanges, ReviewChanges
 from database import DBCreation
-from problems import Prob4, Prob5, Prob6, Prob7, Prob8, Prob9, Prob10
+from problems import Prob4, Prob5, Prob6, Prob7, Prob8, Prob9, Prob10, Paper
 import mysql.connector
 
 
@@ -55,15 +55,23 @@ def main_page():
         #   flash("Reviewers assigned to target paperID's.")
         #    return redirect('main_page')
         # Paper change block
-        # elif "paper-changes-add" in request.form:
-        #    flash('Paper added to sampledb.')
-        #    return redirect('main_page')
-        # elif "paper-changes-del" in request.form:
-        #   flash('Paper "Title" deleted from sampledb.')
-        #    return redirect('main_page')
-        # elif "paper-changes-upd" in request.form:
-        #    flash('Paper updated.')
-        #    return redirect('main_page')
+        elif "paper-changes-add" in request.form:
+            flash('Paper added to sampledb.')
+            paper = Paper()
+            paper.insert(cursor, cnx, paperChanges.paperId.data, paperChanges.abstractPaper.data,
+                         paperChanges.titlePaper.data, paperChanges.pdfPaper.data)
+            return redirect('main_page')
+        elif "paper-changes-del" in request.form:
+            flash('Paper deleted from sampledb.')
+            paper = Paper()
+            paper.delete_paper(cursor, cnx, paperChanges.paperId.data)
+            return redirect('main_page')
+        elif "paper-changes-upd" in request.form:
+            flash('Paper updated.')
+            paper = Paper()
+            paper.update_paper(cursor, cnx, paperChanges.paperId.data, paperChanges.abstractPaper.data,
+                               paperChanges.titlePaper.data, paperChanges.pdfPaper.data)
+            return redirect('main_page')
         # END Paper change block
         # PC Member change block
         elif "pcmem-changes-add" in request.form:

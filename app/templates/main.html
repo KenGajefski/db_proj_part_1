@@ -57,6 +57,9 @@ example is something like a navigation bar or logo in the corner.
         <div>
             <form method="POST" action="/main_page">
                 <p>
+                    {{ paperChangesForm.paperId.label }}{{ paperChangesForm.paperId }}
+                </p>
+                <p>
                     {{ paperChangesForm.abstractPaper.label }}{{ paperChangesForm.abstractPaper }}
                 </p>
                 <p>

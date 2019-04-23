@@ -1,5 +1,5 @@
 from flask_wtf import FlaskForm
-from wtforms import Form, FormField, StringField, SubmitField, DateField, TextAreaField, IntegerField
+from wtforms import Form, FormField, StringField, SubmitField, DateField, TextAreaField, IntegerField, BooleanField
 from wtforms.validators import DataRequired
 
 
@@ -12,6 +12,7 @@ class AssignReviewers(FlaskForm):
 
 class PaperChanges(FlaskForm):
     # paperId needs to be handled in front end since auto_increment doesn't work
+    paperId = IntegerField('Paper ID:', validators=[DataRequired()])
     abstractPaper = StringField('Abstract:', validators=[DataRequired()])
     titlePaper = StringField('Title:', validators=[DataRequired()])
     pdfPaper = StringField('PDF Link:', validators=[DataRequired()])
